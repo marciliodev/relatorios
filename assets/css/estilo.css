@@ -6,11 +6,6 @@ fieldset.RME{
     margin: 5px;
 }
 
-table.RME{
-
-
-}
-
 fieldset.RE{
     width: 900px;
     margin: 15px auto;
@@ -188,8 +183,8 @@ div.header_1 {
 }
 
 /* h1 do pdf de material de serviço vascular */
-#h1_RME {
-    font-size: 18px;
+h1.h1_RME {
+    font-size: 8px;
 }
 
 /* th do pdf de material de serviço vascular */

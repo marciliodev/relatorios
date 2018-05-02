@@ -9,9 +9,7 @@
     <body>
         <header>
             <img src="assets\img\logo2.jpg" class="logo" align="center">
-            <div class='header'>
-                <h1 id='h1_RMA'>Relação de Materiais de Escritório <?=$data = date('d/m/Y');?></h1>
-            </div>
+                <h2 align="center">Relação de Materiais de Escritório <?=$data = date('d/m/Y');?></h2>
         </header>
     </body>
 </html>

@@ -14,23 +14,25 @@
     //var_dump($dados);
     //echo $dados[0]->disc_produto;
     //exit();
-    /*for($i=0; $i < count($dados); $i++){
-        for ($c=0; $c < count($dados[$i]); $c++){
+    $count = 1;
+    for($i=0; $i < count($dados); $i++){
+       // for ($c=0; $c < count($dados[$i]); $c++){
             ?>
             <tr>
-                <td class='left'><?php echo $dados[$i][$c]['disc_produto']; ?></td>
-                <td class='left'><?php echo $dados[$i][$c]['qt_total']; ?></td>
-                <td class='left'><?php echo $dados[$i][$c]['qt_atual']; ?></td>
-                <td class='left'>R$ <?php echo $dados[$i][$c]['vl_unitario']; ?></td>
-                <td class='left'>R$ <?php echo $dados[$i][$c]['vl_total']; ?></td>
+                <td class="center"><?=$count++?></td>
+                <td class='left'><?php echo $dados[$i]->disc_produto; ?></td>
+                <td class='left'><?php echo $dados[$i]->qt_total; ?></td>
+                <td class='left'><?php echo $dados[$i]->qt_atual; ?></td>
+                <td class='left'>R$ <?php echo $dados[$i]->vl_unitario; ?></td>
+                <td class='left'>R$ <?php echo $dados[$i]->vl_total; ?></td>
             </tr>
             <?php
-        }
-    }*/
-    $count = 1;
+    }
     ?>
-
-    <?php foreach ($dados as $produto): ?>
+    
+    <?php 
+    /*
+    foreach ($dados as $produto): ?>
         <td class="center"><?=$count++?></td>
         <td class='left'><?=$produto->disc_produto?></td>
         <td class='center'><?=$produto->qt_total?></td>
@@ -66,6 +68,7 @@
                 }
             }
             echo $valores;
+            */
             ?>
         </td>
     </tr>
