@@ -29,7 +29,6 @@
             <?php
     }
     ?>
-    
     <?php 
     /*
     foreach ($dados as $produto): ?>
@@ -41,6 +40,8 @@
         <td class='center'>R$ <?=$produto->vl_total?></td>
         </tr>
     <?php endforeach; ?>
+     */
+     ?>
     <tr>
         <td></td>
         <td></td>
@@ -68,7 +69,6 @@
                 }
             }
             echo $valores;
-            */
             ?>
         </td>
     </tr>
