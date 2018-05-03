@@ -1,0 +1,1 @@
+$( '#tbcor1 tr:nth-child(odd)' ).css( "background-color", "#bbbbff" );

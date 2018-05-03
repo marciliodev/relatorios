@@ -1,5 +1,12 @@
 <!DOCTYPE html>
 <html>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <link rel="stylesheet" href="<?=('assets/css/estilo.css') ?>" type="text/css">
+</head>
+<body>
 <table border='1' width='1000' align='center'>
     <tr class='header'>
         <th id='th_cod_RE' class='center'>ITENS</th>
@@ -18,7 +25,7 @@
     for($i=0; $i < count($dados); $i++){
        // for ($c=0; $c < count($dados[$i]); $c++){
             ?>
-            <tr>
+            <tr id="tbcor1">
                 <td class="center"><?=$count++?></td>
                 <td class='left'><?php echo $dados[$i]->disc_produto; ?></td>
                 <td class='left'><?php echo $dados[$i]->qt_total; ?></td>
@@ -73,4 +80,5 @@
         </td>
     </tr>
 </table>
+</body>
 </html>

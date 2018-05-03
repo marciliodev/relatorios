@@ -23,7 +23,7 @@ fieldset.RMSV{
 }
 
 /* Classe coloca a cor de fundo para zebrar as linhas */
-.zebra{
+tbody {
     background: lightgray;
     margin: 2px;
 }
@@ -235,4 +235,12 @@ h1.h1_RME {
 /* th do pdf de validade R_E*/
 #th_validade_RE {
     width: 15%;
+}
+
+tbody tr:nth-child(odd) {
+    background-color: #ccc;
+ }
+
+ tr:nth-child(even) {
+    background-color: #f2f2f2
 }
