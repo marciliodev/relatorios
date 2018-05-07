@@ -137,7 +137,7 @@ $config['subclass_prefix'] = 'MY_';
 |	autoloading (application/config/autoload.php)
 */
 $config['composer_autoload'] = 'vendor/autoload.php';
-
+$config['base_url'] = 'http://127.0.0.1/codempdf';
 /*
 |--------------------------------------------------------------------------
 | Allowed URL Characters
