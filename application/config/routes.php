@@ -52,4 +52,3 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 $route['default_controller'] = 'PDF_c';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
-$route['material_escritorio'] = 'PDf_c/relatorio_escritorio';

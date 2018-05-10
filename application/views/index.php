@@ -27,11 +27,12 @@ function filterFunction() {
   <script src="<?=('assets/js/jquery-3.3.1.slim.min.js') ?>"></script>
   <script src="<?=('assets/js/popper.min.js') ?>"></script>
   <script src="<?=('assets/js/bootstrap-4.1.1.min.js') ?>"></script>
+  <script src="<?=('assets/js/jquery-3.3.1.min.js') ?>"></script>
   <link rel="stylesheet" href="<?=('assets/css/bootstrap-4.1.1.min.css') ?>">
 
   <style>
 .dropbtn {
-    background-color: #4CAF50;
+    background-color: #00B2EE;
     color: white;
     padding: 16px;
     font-size: 16px;
@@ -40,7 +41,7 @@ function filterFunction() {
 }
 
 .dropbtn:hover, .dropbtn:focus {
-    background-color: #3e8e41;
+    background-color: #7AC5CD;
 }
 
 #myInput {
@@ -85,7 +86,7 @@ function filterFunction() {
 #conteudo {
 width:99%;
 height:570px;
-border:2px solid #CCC;
+border:0px solid #CCC;
 margin:5px;
  }
 </style>
@@ -97,15 +98,15 @@ margin:5px;
   <button onclick="dropdownMenu()" class="dropbtn">Relatórios do Almoxarifado</button>
   <div id="myDropdown" class="dropdown-content">
     <input type="text" placeholder="Procurar... " id="myInput" onkeyup="filterFunction()">
-    <a href="#material_escritorio">Material de Escritório</a>
-    <a href="#material_almoxarifado">Material do Almoxarifado</a>
-    <a href="#material_servico_vascular">Material de Serviço Vascular</a>
-    <a href="#material_entrada">Material de Exemplo</a>
-    <a href="#material_entrada">Material de Exemplo</a>
-    <a href="#material_entrada">Material de Exemplo</a>
-    <a href="#material_entrada">Material de Exemplo</a>
-    <a href="#material_entrada">Material de Exemplo</a>
-    <a href="#material_entrada">Material de Exemplo</a>
+    <a href="./index.php?p=material_escritorio">Material de Escritório</a>
+    <a href="./index.php?p=material_almoxarifado">Material do Almoxarifado</a>
+    <a href="./index.php?p=material_servico_vascular">Material de Serviço Vascular</a>
+    <a href="./index.php?p=material_entrada">Material de Entrada</a>
+    <a href="#">Material de Exemplo</a>
+    <a href="#">Material de Exemplo</a>
+    <a href="#">Material de Exemplo</a>
+    <a href="#">Material de Exemplo</a>
+    <a href="#">Material de Exemplo</a>
   </div>
 </div>
 <!--
@@ -129,6 +130,31 @@ margin:5px;
 </div>
 -->
 </nav>
-<div id="conteudo"></div>
+<div id="conteudo">
+<a class="btn btn-primary" href="./index.php?p=pdf_escritorio" role="button">Imprimir</a>
+<?php
+    $valor = $_GET['p'];
+
+    if ($valor == 'material_escritorio'){
+        @$this->load->view('pdf/material_escritorio/body')
+        //require_once 'escritorio.php';
+    ;}
+    if ($valor == 'material_almoxarifado'){
+        @$this->load->view('pdf/material_almoxarifado/body')
+        //require_once 'almoxarifado.php';
+        ;}
+    if ($valor == 'material_servico_vascular'){
+        @$this->load->view('pdf/material_servico_vascular/body')
+        //require_once 'vascular.php';
+    ;}
+    if ($valor == 'material_entrada'){
+        @$this->load->view('pdf/material_entrada/body')
+        //require_once 'entrada.php';
+    ;}
+    if ($valor == 'pdf_escritorio'){
+        @$this->load->controllers('pdf_c/relatorio_escritorio')
+    ;}
+?>
+</div>
 </body>
 </html>

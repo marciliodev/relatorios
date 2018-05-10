@@ -20,6 +20,16 @@ class PDF_c extends CI_Controller {
             'entrada' => $this->relacao_entrada()
         );
         $this->load->view('index', $dados);
+
+        /*
+        $impressao = array (
+            'rel_escritorio' => $this->relatorio_escritorio(),
+            'rel_almoxarifado' => $this->relatorio_almoxarifado(),
+            'rel_servico_vascular' => $this->relatorio_servico_vascular(),
+            'rel_entrada' => $this->relatorio_entrada()
+        );
+        $this->load->view('escritorio', $impressao);
+        */
         //$this->load->view('comuns/body', [], TRUE);
         //$this->load->view('comuns/footer');
 
@@ -84,7 +94,7 @@ class PDF_c extends CI_Controller {
         $mpdf->SetHTMLHeader($header);
         $mpdf->SetHTMLFooter('<b>Página {PAGENO}</br>');
         $mpdf->WriteHTML($html);
-        return $mpdf->Output('Relatorio_Material_Escritório.pdf', I);
+        $mpdf->Output('Relatorio_Material_Escritório.pdf', I);
     }
 
     public function relatorio_almoxarifado()
@@ -114,7 +124,7 @@ class PDF_c extends CI_Controller {
         $mpdf->SetHTMLHeader($header);
         $mpdf->SetHTMLFooter('<b>Página {PAGENO}</br>');
         $mpdf->WriteHTML($html);
-        return $mpdf->Output('Relatorio_Material_Almoxarifado.pdf', I);
+        $mpdf->Output('Relatorio_Material_Almoxarifado.pdf', I);
     }
 
     public function relatorio_servico_vascular()
@@ -144,7 +154,7 @@ class PDF_c extends CI_Controller {
         $mpdf->SetHTMLHeader($header);
         $mpdf->SetHTMLFooter('<b>Página {PAGENO}</br>');
         $mpdf->WriteHTML($html);
-        return $mpdf->Output('Relatorio_Material_Serviço_Vascular.pdf', I);
+        $mpdf->Output('Relatorio_Material_Serviço_Vascular.pdf', I);
     }
 
     public function relatorio_entrada()
@@ -174,6 +184,6 @@ class PDF_c extends CI_Controller {
         $mpdf->SetHTMLHeader($header);
         $mpdf->SetHTMLFooter('<b>Página {PAGENO}</br>');
         $mpdf->WriteHTML($html);
-        return $mpdf->Output('Relatorio_Material_Entrada.pdf', I);
+        $mpdf->Output('Relatorio_Material_Entrada.pdf', I);
     }
 }
