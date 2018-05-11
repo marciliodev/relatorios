@@ -20,23 +20,6 @@ class PDF_c extends CI_Controller {
             'entrada' => $this->relacao_entrada()
         );
         $this->load->view('index', $dados);
-
-        /*
-        $impressao = array (
-            'rel_escritorio' => $this->relatorio_escritorio(),
-            'rel_almoxarifado' => $this->relatorio_almoxarifado(),
-            'rel_servico_vascular' => $this->relatorio_servico_vascular(),
-            'rel_entrada' => $this->relatorio_entrada()
-        );
-        $this->load->view('escritorio', $impressao);
-        */
-        //$this->load->view('comuns/body', [], TRUE);
-        //$this->load->view('comuns/footer');
-
-        //$this->relatorio_escritorio();
-        //$this->relatorio_entrada();
-        //$this->relatorio_escritorio();
-        //$this->relatorio_servico_vascular();
     }
 
     public function relacao_escritorio()

@@ -49,6 +49,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | Examples:	my-controller/index	-> my_controller/index
 |		my-controller/my-method	-> my_controller/my_method
 */
-$route['default_controller'] = 'PDF_c';
+$route['default_controller'] = 'pdf_c';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
+$route['pdf_escritorio'] = 'pdf_c/relatorio_escritorio';
+$route['pdf_almoxarifado'] = 'pdf_c/relatorio_almoxarifado';
+$route['pdf_servico_vascular'] = 'pdf_c/relatorio_servico_vascular';
+$route['pdf_entrada'] = 'pdf_c/relatorio_entrada';

@@ -9,7 +9,7 @@
     document.getElementById("myDropdown").classList.toggle("show");
   }
 
-function filterFunction() {
+  function filterFunction() {
     var input, filter, ul, li, a, i;
     input = document.getElementById("myInput");
     filter = input.value.toUpperCase();
@@ -41,7 +41,7 @@ function filterFunction() {
 }
 
 .dropbtn:hover, .dropbtn:focus {
-    background-color: #7AC5CD;
+    background-color: #FF4500;
 }
 
 #myInput {
@@ -88,7 +88,7 @@ width:99%;
 height:570px;
 border:0px solid #CCC;
 margin:5px;
- }
+}
 </style>
 
 </head>
@@ -109,51 +109,29 @@ margin:5px;
     <a href="#">Material de Exemplo</a>
   </div>
 </div>
-<!--
-<div class="row">
-    <div class="list-group" id="list-tab" role="tablist">
-      <a class="list-group-item list-group-item-action list-group-item-info" id="escritorio" data-toggle="list" href="#material_escritorio" role="tab" aria-controls="material_escritorio">Material de Escritório</a>
-      <a class="list-group-item list-group-item-action list-group-item-info" id="almoxarifado" data-toggle="list" href="#material_almoxarifado" role="tab" aria-controls="material_almoxarifado">Material do Almoxarifado</a>
-      <a class="list-group-item list-group-item-action list-group-item-info" id="servico_vascular" data-toggle="list" href="#material_servico_vascular" role="tab" aria-controls="material_servico_vascular">Material de Serviço Vascular</a>
-      <a class="list-group-item list-group-item-action list-group-item-info" id="entrada" data-toggle="list" href="#material_entrada" role="tab" aria-controls="material_entrada">Material de Entrada</a>
-    </div>
-      <div class="tab-content" id="nav-tabContent">
-      <div class="tab-pane fade show active" id="material_escritorio" role="tabpanel" aria-labelledby="material_escritorio">
-      </div>
-      <div class="tab-pane fade" id="material_almoxarifado" role="tabpanel" aria-labelledby="material_almoxarifado">
-        </div>
-      <div class="tab-pane fade" id="material_servico_vascular" role="tabpanel" aria-labelledby="material_servico_vascular">
-      </div>
-      <div class="tab-pane fade" id="material_entrada" role="tabpanel" aria-labelledby="material_entrada">
-      </div>
-    </div>
-</div>
--->
+
 </nav>
 <div id="conteudo">
-<a class="btn btn-primary" href="./index.php?p=pdf_escritorio" role="button">Imprimir</a>
+<a id="btnImp" class="btn btn-primary btn-block" href="http://localhost/codempdf/index.php/pdf_escritorio" role="button" target="_blank">Imprimir</a>
 <?php
-    $valor = $_GET['p'];
+    @$valor = $_GET['p'];
 
     if ($valor == 'material_escritorio'){
-        @$this->load->view('pdf/material_escritorio/body')
+        @$this->load->view('pdf/material_escritorio/body', '', FALSE);
         //require_once 'escritorio.php';
-    ;}
+    }
     if ($valor == 'material_almoxarifado'){
-        @$this->load->view('pdf/material_almoxarifado/body')
+        @$this->load->view('pdf/material_almoxarifado/body', '', fALSE);
         //require_once 'almoxarifado.php';
-        ;}
+    }
     if ($valor == 'material_servico_vascular'){
-        @$this->load->view('pdf/material_servico_vascular/body')
+        @$this->load->view('pdf/material_servico_vascular/body', '', FALSE);
         //require_once 'vascular.php';
-    ;}
+    }
     if ($valor == 'material_entrada'){
-        @$this->load->view('pdf/material_entrada/body')
+        @$this->load->view('pdf/material_entrada/body', '', FALSE);
         //require_once 'entrada.php';
-    ;}
-    if ($valor == 'pdf_escritorio'){
-        @$this->load->controllers('pdf_c/relatorio_escritorio')
-    ;}
+    }
 ?>
 </div>
 </body>

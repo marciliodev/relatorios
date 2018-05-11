@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
 <body>
-<?=$escritorio?>
+TESTE
 </body>
 </html>
