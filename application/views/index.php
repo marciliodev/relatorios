@@ -4,12 +4,67 @@
   <title>Relatórios do Almoxarifado</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <script>
+  
+  <script src="<?=('assets/js/jquery-3.3.1.slim.min.js') ?>"></script>
+  <script src="<?=('assets/js/popper.min.js') ?>"></script>
+  <script src="<?=('assets/js/bootstrap-4.1.1.min.js') ?>"></script>
+  <script src="<?=('assets/js/jquery-3.3.1.min.js') ?>"></script>
+  <script src="<?=('assets/js/jquery.min.js') ?>"></script>
+  <link rel="stylesheet" href="<?=('assets/css/bootstrap-4.1.1.min.css') ?>">
+
+<script>
+$(document).ready(function(){
+    $("a").click(function(){
+        var escritorio = "http://localhost/codempdf/index.php/pdf_escritorio";
+        var almoxarifado = "http://localhost/codempdf/index.php/pdf_almoxarifado";
+        var servico_vascular = "http://localhost/codempdf/index.php/pdf_servico_vascular";
+        var entrada = "http://localhost/codempdf/index.php/pdf_entrada";
+        
+        var url  = window.location.href; 
+        var absoluto = url.split("/")[url.split("/").length -1];
+        console.log(absoluto);
+
+        if (absoluto == "index.php?p=material_escritorio") {
+            
+            return $("#btnImp").attr("href", escritorio);
+        }
+        
+        if (absoluto == "index.php?p=material_almoxarifado") {
+
+            return $("#btnImp").attr("href", almoxarifado);
+        }
+        
+        if (absoluto == "index.php?p=material_servico_vascular") {
+
+            return $("#btnImp").attr("href", servico_vascular);
+        }
+        
+        if (absoluto == "index.php?p=material_entrada") {
+
+             return $("#btnImp").attr("href", entrada);
+        } 
+        
+        else {
+
+            $("#btnImp").attr("href", "#");
+        }
+    });
+});
+  /*
+  function habilitaImpressao() {
+
+      var url_atual = window.location.href;
+      if (url_atual == "http://localhost/codempdf/index.php?p=material_escritorio"){
+  
+      }
+  }*/
   function dropdownMenu() {
+    
     document.getElementById("myDropdown").classList.toggle("show");
   }
 
   function filterFunction() {
+    
     var input, filter, ul, li, a, i;
     input = document.getElementById("myInput");
     filter = input.value.toUpperCase();
@@ -24,13 +79,7 @@
     }
 }
   </script>
-  <script src="<?=('assets/js/jquery-3.3.1.slim.min.js') ?>"></script>
-  <script src="<?=('assets/js/popper.min.js') ?>"></script>
-  <script src="<?=('assets/js/bootstrap-4.1.1.min.js') ?>"></script>
-  <script src="<?=('assets/js/jquery-3.3.1.min.js') ?>"></script>
-  <link rel="stylesheet" href="<?=('assets/css/bootstrap-4.1.1.min.css') ?>">
-
-  <style>
+<style>
 .dropbtn {
     background-color: #00B2EE;
     color: white;
@@ -95,24 +144,26 @@ margin:5px;
 <body>
 <nav class="navbar-right navbar-expand-lg navbar navbar-dark bg-primary">
   <div class="dropdown">
+  <button class="dropbtn">Início</button>
   <button onclick="dropdownMenu()" class="dropbtn">Relatórios do Almoxarifado</button>
+  <button class="dropbtn">Voltar</button>
   <div id="myDropdown" class="dropdown-content">
     <input type="text" placeholder="Procurar... " id="myInput" onkeyup="filterFunction()">
     <a href="./index.php?p=material_escritorio">Material de Escritório</a>
     <a href="./index.php?p=material_almoxarifado">Material do Almoxarifado</a>
     <a href="./index.php?p=material_servico_vascular">Material de Serviço Vascular</a>
     <a href="./index.php?p=material_entrada">Material de Entrada</a>
-    <a href="#">Material de Exemplo</a>
-    <a href="#">Material de Exemplo</a>
-    <a href="#">Material de Exemplo</a>
-    <a href="#">Material de Exemplo</a>
-    <a href="#">Material de Exemplo</a>
+    <a href="./index.php">Material de Exemplo</a>
+    <a href="./index.php">Material de Exemplo</a>
+    <a href="./index.php">Material de Exemplo</a>
+    <a href="./index.php">Material de Exemplo</a>
+    <a href="./index.php">Material de Exemplo</a>
   </div>
 </div>
 
 </nav>
 <div id="conteudo">
-<a id="btnImp" class="btn btn-primary btn-block" href="http://localhost/codempdf/index.php/pdf_escritorio" role="button" target="_blank">Imprimir</a>
+<a id="btnImp" class="btn btn-primary btn-block" href="#" role="button" target="_blank">Imprimir Relatório</a>
 <?php
     @$valor = $_GET['p'];
 

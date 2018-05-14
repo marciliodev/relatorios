@@ -37,7 +37,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 |
 | This route will tell the Router which controller/method to use if those
 | provided in the URL cannot be matched to a valid route.
-|
+|-
 |	$route['translate_uri_dashes'] = FALSE;
 |
 | This is not exactly a route, but allows you to automatically route
