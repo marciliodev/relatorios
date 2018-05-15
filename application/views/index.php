@@ -25,7 +25,7 @@ $(document).ready(function(){
         console.log(absoluto);
 
         if (absoluto == "index.php?p=material_escritorio") {
-            
+            ''
             return $("#btnImp").attr("href", escritorio);
         }
         
@@ -50,14 +50,7 @@ $(document).ready(function(){
         }
     });
 });
-  /*
-  function habilitaImpressao() {
 
-      var url_atual = window.location.href;
-      if (url_atual == "http://localhost/codempdf/index.php?p=material_escritorio"){
-  
-      }
-  }*/
   function dropdownMenu() {
     
     document.getElementById("myDropdown").classList.toggle("show");
@@ -101,10 +94,14 @@ $(document).ready(function(){
     font-size: 16px;
     padding: 14px 20px 12px 45px;
     border: none;
+    height: 35px;
     border-bottom: 1px solid #ddd;
 }
 
-#myInput:focus {outline: 3px solid #ddd;}
+#myInput:focus 
+{
+    outline: 3px solid #ddd;
+}
 
 .dropdown {
     position: relative;
@@ -139,31 +136,34 @@ border:0px solid #CCC;
 margin:5px;
 }
 </style>
-
 </head>
 <body>
-<nav class="navbar-right navbar-expand-lg navbar navbar-dark bg-primary">
-  <div class="dropdown">
-  <button class="dropbtn">Início</button>
-  <button onclick="dropdownMenu()" class="dropbtn">Relatórios do Almoxarifado</button>
-  <button class="dropbtn">Voltar</button>
-  <div id="myDropdown" class="dropdown-content">
-    <input type="text" placeholder="Procurar... " id="myInput" onkeyup="filterFunction()">
-    <a href="./index.php?p=material_escritorio">Material de Escritório</a>
-    <a href="./index.php?p=material_almoxarifado">Material do Almoxarifado</a>
-    <a href="./index.php?p=material_servico_vascular">Material de Serviço Vascular</a>
-    <a href="./index.php?p=material_entrada">Material de Entrada</a>
-    <a href="./index.php">Material de Exemplo</a>
-    <a href="./index.php">Material de Exemplo</a>
-    <a href="./index.php">Material de Exemplo</a>
-    <a href="./index.php">Material de Exemplo</a>
-    <a href="./index.php">Material de Exemplo</a>
-  </div>
-</div>
-
+<nav class="navbar-right navbar-expand-lg navbar navbar-dark bg-primary">  
+    <div class="dropdown">
+        <!--<button onclick="dropdownMenu()" class="dropbtn">Relatórios do Almoxarifado</button>-->
+        <input type="text" placeholder="Pesquisar... " onclick="dropdownMenu()" id="myInput" onkeyup="filterFunction()">
+        <div id="myDropdown" class="dropdown-content">
+            <a href="./index.php?p=material_escritorio">Material de Escritório</a>
+            <a href="./index.php?p=material_almoxarifado">Material do Almoxarifado</a>
+            <a href="./index.php?p=material_servico_vascular">Material de Serviço Vascular</a>
+            <a href="./index.php?p=material_entrada">Material de Entrada</a>
+            <a href="./index.php">Material de Exemplo</a>
+            <a href="./index.php">Material de Exemplo</a>
+            <a href="./index.php">Material de Exemplo</a>
+            <a href="./index.php">Material de Exemplo</a>
+            <a href="./index.php">Material de Exemplo</a>
+        </div>
+    </div>
+    <div class="row justify-content-around">
+        <div class="col-4">
+            <a id="btnImp" class="btn btn-danger" href="#" role="button" target="_blank">Imprimir</a>
+        </div>
+        <div class="col-md-4">
+            <a class="btn btn-danger" href="./index.php">Voltar</a>
+        </div>
+    </div>
 </nav>
 <div id="conteudo">
-<a id="btnImp" class="btn btn-primary btn-block" href="#" role="button" target="_blank">Imprimir Relatório</a>
 <?php
     @$valor = $_GET['p'];
 
