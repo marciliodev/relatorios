@@ -17,7 +17,8 @@ class PDF_c extends CI_Controller {
             'escritorio' => $this->relacao_escritorio(),
             'almoxarifado' => $this->relacao_almoxarifado(),
             'servico_vascular' => $this->relacao_servico_vascular(),
-            'entrada' => $this->relacao_entrada()
+            'entrada' => $this->relacao_entrada(),
+            'data' => date('d/m/Y')
         );
         $this->load->view('index', $dados);
     }
