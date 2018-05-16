@@ -14,7 +14,9 @@
 
 <script>
 $(document).ready(function(){
+
     $("a").click(function(){
+        
         var escritorio = "http://localhost/codempdf/index.php/pdf_escritorio";
         var almoxarifado = "http://localhost/codempdf/index.php/pdf_almoxarifado";
         var servico_vascular = "http://localhost/codempdf/index.php/pdf_servico_vascular";
@@ -22,35 +24,43 @@ $(document).ready(function(){
         
         var url  = window.location.href; 
         var absoluto = url.split("/")[url.split("/").length -1];
-        console.log(absoluto);
+        //console.log(absoluto);
 
         if (absoluto == "index.php?p=material_escritorio") {
-            ''
-            return $("#btnImp").attr("href", escritorio);
+            
+            $("#btnImp").attr("href", escritorio);
         }
         
         if (absoluto == "index.php?p=material_almoxarifado") {
 
-            return $("#btnImp").attr("href", almoxarifado);
+             $("#btnImp").attr("href", almoxarifado);
         }
         
         if (absoluto == "index.php?p=material_servico_vascular") {
 
-            return $("#btnImp").attr("href", servico_vascular);
+            $("#btnImp").attr("href", servico_vascular);
         }
         
         if (absoluto == "index.php?p=material_entrada") {
 
-             return $("#btnImp").attr("href", entrada);
+            $("#btnImp").attr("href", entrada);
         } 
         
-        else {
+        if (absoluto == "http://localhost/codempdf/") {
 
             $("#btnImp").attr("href", "#");
+            $("#btnImp").toggleClass("disabled", true);
+        }
+
+        if (absoluto == "http://localhost/codempdf/index.php/") {
+
+            $("#btnImp").attr("href", "#");
+            $("#btnImp").toggleClass("disabled", true);
         }
     });
-});
 
+});
+ 
 function dropdownMenu() {
     
     document.getElementById("myDropdown").classList.toggle("show");
@@ -172,10 +182,10 @@ margin:5px;
     </div>
     <div class="row justify-content-around">
         <div class="col-4">
-            <a id="btnImp" class="btn btn-danger" href="#" role="button" target="_blank">Imprimir</a>
+            <a id="btnImp" class="btn btn-danger enabled" href="#" role="button" target="_blank">Imprimir</a>
         </div>
         <div class="col-4">
-            <input action="action" class="btn btn-danger" onclick="window.history.go(-1); return false;" type="button" value="Voltar" />
+            <input action="action" id="btnImp" class="btn btn-danger" onclick="window.history.go(-1); return false;" type="button" value="Voltar" />
         </div>
     </div>
 </nav>
