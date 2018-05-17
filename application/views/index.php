@@ -49,13 +49,11 @@ $(document).ready(function(){
         if (absoluto == "http://localhost/codempdf/") {
 
             $("#btnImp").attr("href", "#");
-            $("#btnImp").toggleClass("disabled", true);
         }
 
         if (absoluto == "http://localhost/codempdf/index.php/") {
 
             $("#btnImp").attr("href", "#");
-            $("#btnImp").toggleClass("disabled", true);
         }
     });
 
@@ -174,16 +172,21 @@ margin:5px;
         <!--<button onclick="dropdownMenu()" class="dropbtn">Relatórios do Almoxarifado</button>-->
         <input type="text"  placeholder="Pesquisar... " onclick="dropdownMenu()" id="myInput" onkeyup="filterFunction()">
         <div id="myDropdown" class="dropdown-content">
-            <a href="./index.php?p=material_escritorio">Material de Escritório</a>
-            <a href="./index.php?p=material_almoxarifado">Material do Almoxarifado</a>
-            <a href="./index.php?p=material_servico_vascular">Material de Serviço Vascular</a>
-            <a href="./index.php?p=material_entrada">Material de Entrada</a>
+            <a id="a_escritorio" onclick="mudaImp();" href="./index.php?p=material_escritorio">Material de Escritório</a>
+            <a id="a_almoxarifado" href="./index.php?p=material_almoxarifado">Material do Almoxarifado</a>
+            <a id="a_servico_vascular" href="./index.php?p=material_servico_vascular">Material de Serviço Vascular</a>
+            <a id="a_entrada" href="./index.php?p=material_entrada">Material de Entrada</a>
         </div>
     </div>
     <div class="row justify-content-around">
-        <div class="col-4">
-            <a id="btnImp" class="btn btn-danger enabled" href="#" role="button" target="_blank">Imprimir</a>
-        </div>
+        <?php
+        @$valor = $_GET['p'];
+        // ajustar a lógica e verifcar o que está vindo debugando
+        if ($valor == true) {
+
+            @$bntImp;
+        }
+        ?>
         <div class="col-4">
             <input action="action" id="btnImp" class="btn btn-danger" onclick="window.history.go(-1); return false;" type="button" value="Voltar" />
         </div>

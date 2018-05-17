@@ -13,12 +13,18 @@ class PDF_c extends CI_Controller {
 
 	public function index()
 	{
+        $html = "
+        <div class='col-4'>
+        <a id='btnImp' class='btn btn-danger' href='#' role='button' target='_blank'>Imprimir</a>
+        </div>";
+
         $dados = array (
             'escritorio' => $this->relacao_escritorio(),
             'almoxarifado' => $this->relacao_almoxarifado(),
             'servico_vascular' => $this->relacao_servico_vascular(),
             'entrada' => $this->relacao_entrada(),
-            'data' => date('d/m/Y')
+            'data' => date('d/m/Y'),
+            'bntImp' => $html
         );
         $this->load->view('index', $dados);
     }
