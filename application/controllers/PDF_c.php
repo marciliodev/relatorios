@@ -13,20 +13,71 @@ class PDF_c extends CI_Controller {
 
 	public function index()
 	{
-        $html = "
-        <div class='col-4'>
-        <a id='btnImp' class='btn btn-danger' href='#' role='button' target='_blank'>Imprimir</a>
-        </div>";
-
+        
         $dados = array (
             'escritorio' => $this->relacao_escritorio(),
             'almoxarifado' => $this->relacao_almoxarifado(),
             'servico_vascular' => $this->relacao_servico_vascular(),
             'entrada' => $this->relacao_entrada(),
-            'data' => date('d/m/Y'),
-            'bntImp' => $html
+            'liberaImpressao' => $this->liberaImpressao($this->verificaURL()),
+            'liberaConteudo' => $this->liberaConteudo()
         );
         $this->load->view('index', $dados);
+    }
+
+    public function verificaURL() {
+        
+        return $valor = $_GET['p'];
+    }
+
+    public function passaData() {
+
+        $data = date('d/m/Y');
+    }
+
+    //verificar porque não chama o conteúdo debugar
+    public function liberaImpressao($url) 
+    {
+        
+        if ($url != "") {
+
+            return  $html = "<a id='btnImp' class='btn btn-danger' href='#' role='button' target='_blank'>Imprimir</a>";
+        } else {
+
+            return "";
+        }
+       
+    }
+
+    public function liberaConteudo()
+    {
+        if ($this->verificaURL() == 'material_escritorio'){
+            
+            $html = "<h1 id=\"h1Escritorio\">Relatório de Escritório - ".$this->passaData()."</h1>";
+            $this->load->view('pdf/material_escritorio/body', '', FALSE);
+            //require_once 'escritorio.php';
+        }
+
+        if ($this->verificaURL() == 'material_almoxarifado'){
+            
+            $html = "<h1 id=\"h1Escritorio\">Relatório do Almoxarifado - ".$this->passaData()."</h1>";
+            $this->load->view('pdf/material_almoxarifado/body', '', FALSE);
+            //require_once 'escritorio.php';
+        }
+
+        if ($this->verificaURL() == 'material_servico_vascular'){
+            
+            $html = "<h1 id=\"h1Escritorio\">Relatório de Serviço Vascular - ".$this->passaData()."</h1>";
+            $this->load->view('pdf/material_servico_vascular/body', '', FALSE);
+            //require_once 'escritorio.php';
+        }
+
+        if ($this->verificaURL() == 'material_entrada'){
+            
+            $html = "<h1 id=\"h1Escritorio\">Relatório de Entrada - ".$this->passaData()."</h1>";
+            $this->load->view('pdf/material_entrada/body', '', FALSE);
+            //require_once 'escritorio.php';
+        }
     }
 
     public function relacao_escritorio()
