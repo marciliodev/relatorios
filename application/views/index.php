@@ -28,11 +28,11 @@
         </div>
     </div>
     <div class="row justify-content-around">
-        <div class='col-4'>
-            <?php
-                var_dump(@$liberaImpresao);
-                //@$liberaImpresao;
-            ?>
+        <div class="col-4">
+        <a id="inicio" class="btn btn-danger" href="./index.php">Início</a>
+        </div>
+        <div class="col-4">
+            <?=@$liberaImpressao?>
         </div>
         <div class="col-4">
             <input action="action" class="btn btn-danger" onclick="window.history.go(-1); return false;" type="button" value="Voltar" />

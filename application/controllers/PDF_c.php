@@ -15,74 +15,59 @@ class PDF_c extends CI_Controller {
 	{
         
         $dados = array (
-            'escritorio' => $this->relacao_escritorio(),
-            'almoxarifado' => $this->relacao_almoxarifado(),
-            'servico_vascular' => $this->relacao_servico_vascular(),
-            'entrada' => $this->relacao_entrada(),
-            'liberaImpressao' => $this->liberaImpressao($this->verificaURL()),
+            'liberaImpressao' => $this->liberaImpressao(),
             'liberaConteudo' => $this->liberaConteudo()
         );
         $this->load->view('index', $dados);
     }
 
-    public function verificaURL() {
-        
-        return $valor = $_GET['p'];
-    }
-
     public function passaData() {
 
-        $data = date('d/m/Y');
+        return date('d/m/Y');
     }
 
     //verificar porque não chama o conteúdo debugar
-    public function liberaImpressao($url) 
+    public function liberaImpressao() 
     {
-        
-        if ($url != "") {
 
-            return  $html = "<a id='btnImp' class='btn btn-danger' href='#' role='button' target='_blank'>Imprimir</a>";
-        } else {
-
-            return "";
+        //return var_dump($url);
+        if (isset($_GET['p'])) {
+            return "<a id='btnImp' class='btn btn-danger' href='#' role='button' target='_blank'>Imprimir</a>";
+            //return var_dump($html);
         }
-       
     }
 
     public function liberaConteudo()
     {
-        if ($this->verificaURL() == 'material_escritorio'){
+        if (isset($_GET['p']) == 'material_escritorio'){
             
-            $html = "<h1 id=\"h1Escritorio\">Relatório de Escritório - ".$this->passaData()."</h1>";
-            $this->load->view('pdf/material_escritorio/body', '', FALSE);
-            //require_once 'escritorio.php';
+            return $this->relacao_escritorio();
+            exit;
         }
 
-        if ($this->verificaURL() == 'material_almoxarifado'){
+        if (isset($_GET['p']) == 'material_almoxarifado'){
             
-            $html = "<h1 id=\"h1Escritorio\">Relatório do Almoxarifado - ".$this->passaData()."</h1>";
-            $this->load->view('pdf/material_almoxarifado/body', '', FALSE);
-            //require_once 'escritorio.php';
+            return $this->relacao_almoxarifado();
+            exit;
         }
 
-        if ($this->verificaURL() == 'material_servico_vascular'){
+        if (isset($_GET['p']) == 'material_servico_vascular'){
             
-            $html = "<h1 id=\"h1Escritorio\">Relatório de Serviço Vascular - ".$this->passaData()."</h1>";
-            $this->load->view('pdf/material_servico_vascular/body', '', FALSE);
-            //require_once 'escritorio.php';
+           return $this->relacao_servico_vascular();
+           exit;
         }
 
-        if ($this->verificaURL() == 'material_entrada'){
+        if (isset($_GET['p']) == 'material_entrada'){
             
-            $html = "<h1 id=\"h1Escritorio\">Relatório de Entrada - ".$this->passaData()."</h1>";
-            $this->load->view('pdf/material_entrada/body', '', FALSE);
-            //require_once 'escritorio.php';
+           return $this->relacao_entrada();
+           exit;
         }
     }
 
     public function relacao_escritorio()
     {
         $dados['dados'] = $this->pdf->busca_produtos();
+        $dados['titulo'] = "<h1 align=\"center\" id=\"#mudaH1\">Relatório de Escritório - ".$this->passaData()."</h1>";
         //var_dump($var);return;
         return $this->load->view('pdf/material_escritorio/body', $dados, TRUE);
     }
@@ -90,6 +75,7 @@ class PDF_c extends CI_Controller {
     public function relacao_almoxarifado()
     {
         $dados['dados'] = $this->pdf->busca_produtos();
+        $dados['titulo'] = "<h1 align=\"center\" id=\"#mudaH1\">Relatório do Almoxarifado - ".$this->passaData()."</h1>";
         //var_dump($var);return;
         return $this->load->view('pdf/material_almoxarifado/body', $dados, TRUE);
     }
@@ -97,6 +83,7 @@ class PDF_c extends CI_Controller {
     public function relacao_servico_vascular()
     {
         $dados['dados'] = $this->pdf->busca_produtos();
+        $dados['titulo'] = "<h1 align=\"center\" id=\"#mudaH1\">Relatório de Serviço Vascular - ".$this->passaData()."</h1>";
         //var_dump($var);return;
         return $this->load->view('pdf/material_servico_vascular/body', $dados, TRUE);
     }
@@ -104,6 +91,7 @@ class PDF_c extends CI_Controller {
     public function relacao_entrada()
     {
         $dados['dados'] = $this->pdf->busca_produtos();
+        $dados['titulo'] = "<h1 align=\"center\" id=\"#mudaH1\">Relatório de Entrada - ".$this->passaData()."</h1>";
         //var_dump($var);return;
         return $this->load->view('pdf/material_entrada/body', $dados, TRUE);
     }
