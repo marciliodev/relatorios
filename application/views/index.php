@@ -40,6 +40,7 @@
     </div>
 </nav>
 <div id="conteudo">
+    <?=@$setTitulo?>
     <?=@$liberaConteudo?>
 </div>
 </body>
