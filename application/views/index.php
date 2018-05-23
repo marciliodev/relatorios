@@ -28,16 +28,26 @@
         </div>
     </div>
     <div class="row justify-content-around">
-        <div class="col-4">
-        <a id="inicio" class="btn btn-danger" href="./index.php">Início</a>
-        </div>
-        <div class="col-4">
-            <?=@$liberaImpressao?>
-        </div>
-        <div class="col-4">
-            <input action="action" class="btn btn-danger" onclick="window.history.go(-1); return false;" type="button" value="Voltar" />
-        </div>
+            <a class="btn" href="./index.php"><img height="38px" width="45px" src="<?=('assets/img/home.png')?>"></a>
+            <a class="btn" onclick="window.history.go(-1); return false;"><img height="38px" width="45px" src="<?=('assets/img/return.png')?>">
+            <a class="btn" onclick="window.history.go(1); return false;"><img height="38px" width="45px" src="<?=('assets/img/next.png')?>"></a>
+            <a href="http://www.pmvc.ba.gov.br" target="_blank"><img height="40px" width="130px" src="<?=('assets/img/MARCA PMVC_2017_COLOR.png')?>"></a>
     </div>
+    <!--
+    <div class="row justify-content-around">
+        <div class="row">
+            <div class="col-sm-4">
+                <a id="inicio" class="btn btn-danger" href="./index.php">Início</a>
+            </div>
+            <div class="col-sm-4">
+                <?=@$liberaImpressao?>
+            </div>
+            <div class="col-sm-4">
+                <input action="action" class="btn btn-danger" onclick="window.history.go(-1); return false;" type="button" value="Voltar" />
+            </div>
+        </div> 
+    </div>
+    -->
 </nav>
 <div id="conteudo">
     <?=@$setTitulo?>
