@@ -22,6 +22,8 @@ class PDF_c extends CI_Controller {
         $this->load->view('index', $dados);
     }
 
+    //CONTROLADORES DE CONTEÚDO 
+
     public function passaData() {
 
         return date('d/m/Y');
@@ -41,9 +43,7 @@ class PDF_c extends CI_Controller {
     public function setTitulo()
     {
 
-        $url = @$_GET['p'];
-
-        switch ($url) {
+        switch (@$_GET['p']) {
             case 'material_escritorio':
                 return "<h1 class=\"h1Titulo\">Relatório de Material de Escritório - ".$this->passaData().".</h1>";
                 break;
@@ -75,40 +75,49 @@ class PDF_c extends CI_Controller {
             */
     }            
         
-    
-
     public function liberaConteudo()
     {
-        if (@$_GET['p'] == 'material_escritorio'){
-            
-            return $this->relacao_escritorio();
-            exit;
+        switch (@$_GET['p']) {
+            case 'material_escritorio':
+                return $this->relacao_escritorio_html();
+                break;
+            case 'material_almoxarifado':
+                return $this->relacao_almoxarifado();
+                break;
+            case 'material_servico_vascular':
+                return $this->relacao_servico_vascular();
+                break;
+            case 'material_entrada':
+                return $this->relacao_entrada();
+                break;
+            default:
+                return $this->relacao_index();
+                break;
         }
 
-        if (@$_GET['p'] == 'material_almoxarifado'){
-            
-            return $this->relacao_almoxarifado();
-            exit;
-        }
-
-        if (@$_GET['p'] == 'material_servico_vascular'){
-            
-           return $this->relacao_servico_vascular();
-           exit;
-        }
-
-        if (@$_GET['p'] == 'material_entrada'){
-            
-           return $this->relacao_entrada();
-           exit;
-        }
     }
 
-    public function relacao_escritorio()
+    public function relacao_index()
     {
-        $dados['dados'] = $this->pdf->busca_produtos();
+
+        $html = "";
+        $html .= "
+            <div class=\"divIndex\">
+            <h1 class=\"h1TituloIndex\">Bem-Vindo ao Módulo de Relatórios do Almoxarifado!</h1>
+            </div>
+        ";
+        return $html;
+    }
+
+    public function relacao_escritorio_html()
+    {
         //var_dump($var);return;
-        return $this->load->view('pdf/material_escritorio/body', $dados, TRUE);
+        return $this->load->view('pdf/material_escritorio/url', '', TRUE);
+    }
+
+    public function modal_escritorio()
+    {
+        return $this->load->view('pdf/material_escritorio/modal', '', TRUE);
     }
 
     public function relacao_almoxarifado()
@@ -132,6 +141,9 @@ class PDF_c extends CI_Controller {
         return $this->load->view('pdf/material_entrada/body', $dados, TRUE);
     }
 
+    //CONTROLE DOS CALENDÁRIOS
+
+    //CONTROLE DOS CORPOS DA BIBLIOTECA MPDF 
     public function relatorio_escritorio()
     {
         $data = date('d/m/Y');
