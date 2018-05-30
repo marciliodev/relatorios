@@ -15,7 +15,6 @@ class PDF_c extends CI_Controller {
 	{
         
         $dados = array (
-            'liberaImpressao' => $this->liberaImpressao(),
             'setTitulo' => $this->setTitulo(),
             'liberaConteudo' => $this->liberaConteudo()
         );
@@ -27,17 +26,6 @@ class PDF_c extends CI_Controller {
     public function passaData() {
 
         return date('d/m/Y');
-    }
-
-    //verificar porque não chama o conteúdo debugar
-    public function liberaImpressao() 
-    {
-
-        //return var_dump($url);
-        if (isset($_GET['p'])) {
-            return "<a id=\"btnImp\" class=\"btn btn-danger\" href=\"#\" role=\"button\" target=\"_blank\">Imprimir</a>";
-            //return var_dump($html);
-        }
     }
 
     public function setTitulo()
@@ -75,7 +63,7 @@ class PDF_c extends CI_Controller {
             */
     }            
         
-    public function liberaConteudo()
+    public function liberaConteudo() //modificar estrutura como em relacao_escritorio_html();
     {
         switch (@$_GET['p']) {
             case 'material_escritorio':
@@ -94,12 +82,31 @@ class PDF_c extends CI_Controller {
                 return $this->relacao_index();
                 break;
         }
+    }
 
+    public function liberaImpressao() //modificar estrutura como em relacao_escritorio_html();
+    {
+        switch (@$_GET['p']) {
+            case 'material_escritorio':
+                return "<a class=\"btn btn-primary\" href=\"./index.php/pdf_escritorio\" target=\"_blank\">Gerar PDF</a>";
+                break;
+            case 'material_almoxarifado':
+                return "";//implementar
+                break;
+            case 'material_servico_vascular':
+                return "";//implementar
+                break;
+            case 'material_entrada':
+                return "";//implementar
+                break;
+            default:
+                return "";//implementar
+                break;
+        }
     }
 
     public function relacao_index()
     {
-
         $html = "";
         $html .= "
             <div class=\"divIndex\">
@@ -109,15 +116,14 @@ class PDF_c extends CI_Controller {
         return $html;
     }
 
-    public function relacao_escritorio_html()
+    public function relacao_escritorio_html()//espelhar nas demais estrurutas também.
     {
         //var_dump($var);return;
-        return $this->load->view('pdf/material_escritorio/url', '', TRUE);
-    }
-
-    public function modal_escritorio()
-    {
-        return $this->load->view('pdf/material_escritorio/modal', '', TRUE);
+        $dados['dados'] = $this->pdf->busca_produtos();
+        $dados['tituloModal'] = $this->setTitulo();
+        $dados['impressaoPDF'] = $this->liberaImpressao();
+        //$dados['bodyModal'] = $this->load->view('pdf/material_escritorio/body', '', FALSE);
+        return $this->load->view('pdf/material_escritorio/url', $dados, TRUE);
     }
 
     public function relacao_almoxarifado()
@@ -140,8 +146,6 @@ class PDF_c extends CI_Controller {
         //var_dump($var);return;
         return $this->load->view('pdf/material_entrada/body', $dados, TRUE);
     }
-
-    //CONTROLE DOS CALENDÁRIOS
 
     //CONTROLE DOS CORPOS DA BIBLIOTECA MPDF 
     public function relatorio_escritorio()

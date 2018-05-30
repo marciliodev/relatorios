@@ -29,16 +29,34 @@
                             </div>
                         </div>
                 </div>
-
             </div>
 
-            <div class="form-group">
-                <div class="col-sm-offset-2 col-sm-10">
-                    <a class="btn btn-primary" href="#">Consultar</a>
+        <!-- Button trigger modal -->
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalEscritorio">
+            Consultar
+        </button>
+
+        <!-- Modal -->
+        <div class="modal fade" id="modalEscritorio" tabindex="-1" role="dialog" aria-labelledby="modalEscritorioLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modalEscritorioLabel"><?=@$tituloModal?></h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
+                    <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                   <?=@$this->load->view('pdf/material_escritorio/body', '', TRUE)?>
+                </div>
+                    <div class="modal-footer">
+                        <?=@$impressaoPDF?>
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+                    </div>
                 </div>
             </div>
-        </form> 
         </div>
-    </div>
+        
+    </div> <!-- Fim do Container-->
 </body>
 </html>

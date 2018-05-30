@@ -32,6 +32,7 @@
             <a id="a_entrada" href="./index.php?p=material_entrada">Material de Entrada</a>
         </div>
     </div>
+    <!-- Implementar depois...
     <div class="row justify-content-around">
         <div class="col-1">
             <a class="btn btn-danger" href="./index.php">Início</a>
@@ -41,12 +42,14 @@
         </div>
         <div class="col-1">
             <a class="btn btn-danger" onclick="window.history.go(1); return false;">Avançar</a>
-        </div>
-        <div class="col-1">
-            <a href="http://www.pmvc.ba.gov.br" target="_blank"><img height="40px" width="130px" src="<?=('assets/img/MARCA PMVC_2017_COLOR.png')?>"></a>
-        </div>
+        </div> 
+    -->
+    <div class="col-1">
+        <a href="./index.php"><img height="40px" width="130px" src="<?=('assets/img/MARCA PMVC_2017_COLOR.png')?>"></a>    
     </div>
+        <!-- <a href="http://www.pmvc.ba.gov.br" target="_blank"><img height="40px" width="130px" src="<?=('assets/img/MARCA PMVC_2017_COLOR.png')?>"></a> -->
     <!--
+         </div>
     <div class="row justify-content-around">
         <div class="row">
             <div class="col-sm-4">
