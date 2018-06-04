@@ -70,13 +70,13 @@ class PDF_c extends CI_Controller {
                 return $this->relacao_escritorio_html();
                 break;
             case 'material_almoxarifado':
-                return $this->relacao_almoxarifado();
+                return $this->relacao_almoxarifado_html();
                 break;
             case 'material_servico_vascular':
-                return $this->relacao_servico_vascular();
+                return $this->relacao_servico_vascular_html();
                 break;
             case 'material_entrada':
-                return $this->relacao_entrada();
+                return $this->relacao_entrada_html();
                 break;
             default:
                 return $this->relacao_index();
@@ -91,13 +91,13 @@ class PDF_c extends CI_Controller {
                 return "<a class=\"btn btn-primary\" href=\"./index.php/pdf_escritorio\" target=\"_blank\">Gerar PDF</a>";
                 break;
             case 'material_almoxarifado':
-                return "";//implementar
+                return "<a class=\"btn btn-primary\" href=\"./index.php/pdf_almoxarifado\" target=\"_blank\">Gerar PDF</a>";
                 break;
             case 'material_servico_vascular':
-                return "";//implementar
+            return "<a class=\"btn btn-primary\" href=\"./index.php/pdf_servico_vascular\" target=\"_blank\">Gerar PDF</a>";
                 break;
             case 'material_entrada':
-                return "";//implementar
+            return "<a class=\"btn btn-primary\" href=\"./index.php/pdf_entrada\" target=\"_blank\">Gerar PDF</a>";
                 break;
             default:
                 return "";//implementar
@@ -126,25 +126,34 @@ class PDF_c extends CI_Controller {
         return $this->load->view('pdf/material_escritorio/url', $dados, TRUE);
     }
 
-    public function relacao_almoxarifado()
+    public function relacao_almoxarifado_html()//espelhar nas demais estrurutas também.
     {
-        $dados['dados'] = $this->pdf->busca_produtos();
         //var_dump($var);return;
-        return $this->load->view('pdf/material_almoxarifado/body', $dados, TRUE);
+        $dados['dados'] = $this->pdf->busca_produtos();
+        $dados['tituloModal'] = $this->setTitulo();
+        $dados['impressaoPDF'] = $this->liberaImpressao();
+        //$dados['bodyModal'] = $this->load->view('pdf/material_escritorio/body', '', FALSE);
+        return $this->load->view('pdf/material_almoxarifado/url', $dados, TRUE);
     }
 
-    public function relacao_servico_vascular()
+    public function relacao_servico_vascular_html()//espelhar nas demais estrurutas também.
     {
-        $dados['dados'] = $this->pdf->busca_produtos();
         //var_dump($var);return;
-        return $this->load->view('pdf/material_servico_vascular/body', $dados, TRUE);
+        $dados['dados'] = $this->pdf->busca_produtos();
+        $dados['tituloModal'] = $this->setTitulo();
+        $dados['impressaoPDF'] = $this->liberaImpressao();
+        //$dados['bodyModal'] = $this->load->view('pdf/material_escritorio/body', '', FALSE);
+        return $this->load->view('pdf/material_servico_vascular/url', $dados, TRUE);
     }
 
-    public function relacao_entrada()
+    public function relacao_entrada_html()//espelhar nas demais estrurutas também.
     {
-        $dados['dados'] = $this->pdf->busca_produtos();
         //var_dump($var);return;
-        return $this->load->view('pdf/material_entrada/body', $dados, TRUE);
+        $dados['dados'] = $this->pdf->busca_produtos();
+        $dados['tituloModal'] = $this->setTitulo();
+        $dados['impressaoPDF'] = $this->liberaImpressao();
+        //$dados['bodyModal'] = $this->load->view('pdf/material_escritorio/body', '', FALSE);
+        return $this->load->view('pdf/material_entrada/url', $dados, TRUE);
     }
 
     //CONTROLE DOS CORPOS DA BIBLIOTECA MPDF 
@@ -168,7 +177,8 @@ class PDF_c extends CI_Controller {
             'margin_bottom' => 10,
             'margin_header' => 0,
             'margin_footer' => 5,
-            'orientation' => 'L', 
+            'format' => 'A4', //implementação depois última atualização.
+            'orientation' => 'P', //mudou depois da última atualização.
             'default_font' => 'arial'
         ]);
         $mpdf->SetTitle('Relatório de Materiais de Escritório');
@@ -198,7 +208,8 @@ class PDF_c extends CI_Controller {
             'margin_bottom' => 10,
             'margin_header' => 0,
             'margin_footer' => 5,
-            'orientation' => 'L', 
+            'format' => 'A4', //implementação depois última atualização.
+            'orientation' => 'P', //mudou depois da última atualização.
             'default_font' => 'arial'
         ]);
         $mpdf->SetTitle('Relatório de Materiais do Almoxarifado');
@@ -228,7 +239,8 @@ class PDF_c extends CI_Controller {
             'margin_bottom' => 10,
             'margin_header' => 0,
             'margin_footer' => 5,
-            'orientation' => 'L', 
+            'format' => 'A4', //implementação depois última atualização.
+            'orientation' => 'P', //mudou depois da última atualização. 
             'default_font' => 'arial'
         ]);
         $mpdf->SetTitle('Relatório de Materiais de Serviço Vascular');
@@ -258,7 +270,8 @@ class PDF_c extends CI_Controller {
             'margin_bottom' => 10,
             'margin_header' => 0,
             'margin_footer' => 5,
-            'orientation' => 'L', 
+            'format' => 'A4', //implementação depois última atualização.
+            'orientation' => 'P', //mudou depois da última atualização.
             'default_font' => 'arial'
         ]);
         $mpdf->SetTitle('Relatório de Materiais de Entrada');

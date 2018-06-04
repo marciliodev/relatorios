@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="<?=('assets/css/estilo.css') ?>">
 </head>
 <body>
-<table border='1' width='1000' align='center'>
+<table border='1' align='center'>
     <tr class='header'>
         <th id='th_cod_RE' class='center'>ITENS</th>
         <th id='th_desc_RSV' class='center'>DESCRIÇÃO</th>
