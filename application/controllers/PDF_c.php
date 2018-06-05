@@ -168,7 +168,7 @@ class PDF_c extends CI_Controller {
         set_time_limit(300); //seta o tempo limite de resposta para 
         ini_set("memory_limit", "600M"); //seta a quantidade de memória que pode ser usada pelo servidor
         $mpdf = new \Mpdf\Mpdf([
-            'tempDir' => '/tmp', 
+            //'tempDir' => '/tmp', no windows precisa ser comentado
             'setAutoTopMargin' => 'stretch', 
             'setAutoBottomMargin' => 'stretch',
             'autoMarginPadding' => -4,
@@ -199,7 +199,7 @@ class PDF_c extends CI_Controller {
         set_time_limit(300); //seta o tempo limite de resposta para 
         ini_set("memory_limit", "600M"); //seta a quantidade de memória que pode ser usada pelo servidor
         $mpdf = new \Mpdf\Mpdf([
-            'tempDir' => '/tmp', 
+            //'tempDir' => '/tmp', no windows precisa ser comentado
             'setAutoTopMargin' => 'stretch', 
             'setAutoBottomMargin' => 'stretch',
             'autoMarginPadding' => -4,
@@ -230,7 +230,7 @@ class PDF_c extends CI_Controller {
         set_time_limit(300); //seta o tempo limite de resposta para 
         ini_set("memory_limit", "600M"); //seta a quantidade de memória que pode ser usada pelo servidor
         $mpdf = new \Mpdf\Mpdf([
-            'tempDir' => '/tmp', 
+            //'tempDir' => '/tmp', no windows precisa ser comentado
             'setAutoTopMargin' => 'stretch', 
             'setAutoBottomMargin' => 'stretch',
             'autoMarginPadding' => -4,
@@ -261,7 +261,7 @@ class PDF_c extends CI_Controller {
         set_time_limit(300); //seta o tempo limite de resposta para 
         ini_set("memory_limit", "600M"); //seta a quantidade de memória que pode ser usada pelo servidor
         $mpdf = new \Mpdf\Mpdf([
-            'tempDir' => '/tmp', 
+            //'tempDir' => '/tmp', no windows precisa ser comentado
             'setAutoTopMargin' => 'stretch', 
             'setAutoBottomMargin' => 'stretch',
             'autoMarginPadding' => -4,
