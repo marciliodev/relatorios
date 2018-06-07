@@ -10,15 +10,15 @@
 <table border='1' align='center'>
     <tr class='header'>
         <th id='th_cod_RE' class='center'>ITENS</th>
-        <th id='th_desc_RSV' class='center'>DESCRIÇÃO DO PRODUTO</th>
-        <th class='center'>QTD. ALMOXARIFADO</th>
-        <th class='center'>QTD. ATUAL</th>
+        <th id='th_desc_RSV' class='center'>DESCRIÇÃO DO ITEM</th>
+        <th class='center'>QUANTITATIVO</th>
+        <th class='center'>U.F</th>
         <th class='center'>VALOR UNITÁRIO R$</th>
         <th class='center'>VALOR TOTAL R$</th>
     </tr>
 
     <?php
-    //var_dump($dados);
+    //var_dump($dados); 
     //echo $dados[0]->disc_produto;
     //exit();
     $count = 1;
@@ -27,11 +27,11 @@
             ?>
             <tr id="tbcor1">
                 <td class="center"><?=$count++?></td>
-                <td class='left'><?php echo $dados[$i]->disc_produto; ?></td>
-                <td class='left'><?php echo $dados[$i]->qt_total; ?></td>
-                <td class='left'><?php echo $dados[$i]->qt_atual; ?></td>
-                <td class='left'>R$ <?php echo $dados[$i]->vl_unitario; ?></td>
-                <td class='left'>R$ <?php echo $dados[$i]->vl_total; ?></td>
+                <td class='left'><?php echo mb_strtoupper($dados[$i]->disc_produto) ?></td>
+                <td class='left'><?php echo $dados[$i]->qt_total ?></td>
+                <td class='left'><?php echo mb_strtoupper($dados[$i]->unidade, 'UTF-8') ?></td>
+                <td class='left'>R$ <?php echo $dados[$i]->vl_unitario ?></td>
+                <td class='left'>R$ <?php echo $dados[$i]->vl_unitario*$dados[$i]->qt_total ?></td>
             </tr>
             <?php
     }
@@ -54,6 +54,8 @@
         <td></td>
         <td></td>
         <td></td>
+        <td></td>
+        <!--
         <td class='center'><b>TOTAL R$ </b>
             <?php
             //echo $dados[0]->vl_unitario;
@@ -66,13 +68,14 @@
             echo $valores;
             ?>
         </td>
+        -->
         <td class='center'><b>TOTAL R$ </b>
             <?php
             //echo $dados[0]->vl_total;
             $valores = 0.00;
             for ($i=0; $i < count($dados); $i++) {
                 for ($j = 0; $j < count($dados[$i]); $j++) {
-                    $valores += $dados[$i]->vl_total;
+                    $valores += $dados[$i]->vl_unitario*$dados[$i]->qt_total;
                 }
             }
             echo $valores;
