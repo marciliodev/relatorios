@@ -171,7 +171,7 @@ class PDF_c extends CI_Controller {
             //'tempDir' => '/tmp', no windows precisa ser comentado
             'setAutoTopMargin' => 'stretch', 
             'setAutoBottomMargin' => 'stretch',
-            'autoMarginPadding' => -4,
+            'autoMarginPadding' => -10, // estava -4
             'margin_left' => 5,
             'margin_right' => 5,
             'margin_bottom' => 10,
@@ -202,7 +202,7 @@ class PDF_c extends CI_Controller {
             //'tempDir' => '/tmp', no windows precisa ser comentado
             'setAutoTopMargin' => 'stretch', 
             'setAutoBottomMargin' => 'stretch',
-            'autoMarginPadding' => -4,
+            'autoMarginPadding' => -10, // estava -4
             'margin_left' => 5,
             'margin_right' => 5,
             'margin_bottom' => 10,
@@ -233,7 +233,7 @@ class PDF_c extends CI_Controller {
             //'tempDir' => '/tmp', no windows precisa ser comentado
             'setAutoTopMargin' => 'stretch', 
             'setAutoBottomMargin' => 'stretch',
-            'autoMarginPadding' => -4,
+            'autoMarginPadding' => -10, // estava -4
             'margin_left' => 5,
             'margin_right' => 5,
             'margin_bottom' => 10,
@@ -264,7 +264,7 @@ class PDF_c extends CI_Controller {
             //'tempDir' => '/tmp', no windows precisa ser comentado
             'setAutoTopMargin' => 'stretch', 
             'setAutoBottomMargin' => 'stretch',
-            'autoMarginPadding' => -4,
+            'autoMarginPadding' => -10, // estava -4
             'margin_left' => 5,
             'margin_right' => 5,
             'margin_bottom' => 10,

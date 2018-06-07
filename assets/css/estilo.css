@@ -34,9 +34,9 @@ tbody {
     margin: auto;
 }
 
-h1{
-    text-align: center;
-    font-size: 11px;
+h1.tituloHeader {
+    align: center;
+    font-size: 18px;
 }
 
 h1.entrada{

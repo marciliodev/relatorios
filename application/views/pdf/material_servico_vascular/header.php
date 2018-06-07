@@ -9,7 +9,7 @@
     <body>
         <header>
             <img src="assets\img\logo2.jpg" class="logo" align="center">
-                <h3 align="center">Relação de Materiais de Serviço Vascular <?=$data = date('d/m/Y');?></h3>
+            <h1 class="tituloHeader" align="center">Relação de Materiais de Servićo Vascular <?=$data = date('d/m/Y');?></h1>
         </header>
     </body>
 </html>

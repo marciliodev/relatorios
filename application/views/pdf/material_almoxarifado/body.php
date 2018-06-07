@@ -30,8 +30,8 @@
                 <td class='left'><?php echo mb_strtoupper($dados[$i]->disc_produto) ?></td>
                 <td class='left'><?php echo $dados[$i]->qt_total ?></td>
                 <td class='left'><?php echo mb_strtoupper($dados[$i]->unidade, 'UTF-8') ?></td>
-                <td class='left'>R$ <?php echo $dados[$i]->vl_unitario ?></td>
-                <td class='left'>R$ <?php echo $dados[$i]->vl_unitario*$dados[$i]->qt_total ?></td>
+                <td class='left'>R$ <?php echo number_format($dados[$i]->vl_unitario, 2, ",",".") ?></td>
+                <td class='left'>R$ <?php echo number_format($dados[$i]->vl_unitario*$dados[$i]->qt_total, 2, ",",".") ?></td>
             </tr>
             <?php
     }
@@ -78,7 +78,7 @@
                     $valores += $dados[$i]->vl_unitario*$dados[$i]->qt_total;
                 }
             }
-            echo $valores;
+            echo number_format($valores, 2, ",",".");
             ?>
         </td>
     </tr>
