@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: 05-Jun-2018 às 11:57
+-- Generation Time: 07-Jun-2018 às 15:38
 -- Versão do servidor: 5.7.22-0ubuntu18.04.1
 -- PHP Version: 7.1.17-1+ubuntu18.04.1+deb.sury.org+1
 
@@ -34,33 +34,20 @@ CREATE TABLE `produtos` (
   `vl_unitario` decimal(10,2) NOT NULL,
   `vl_total` decimal(10,2) NOT NULL,
   `lote` int(50) DEFAULT NULL,
-  `validade` date DEFAULT NULL
+  `validade` date DEFAULT NULL,
+  `unidade` varchar(120) DEFAULT NULL,
+  `dt_entrada` date DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Extraindo dados da tabela `produtos`
 --
 
-INSERT INTO `produtos` (`itens`, `disc_produto`, `qt_total`, `qt_atual`, `vl_unitario`, `vl_total`, `lote`, `validade`) VALUES
-(1, 'Bisturi', 123, 10, '15.98', '343.87', 100, '2020-10-10'),
-(1, 'Bisturi', 123, 10, '15.98', '343.87', 100, '2020-10-10'),
-(1, 'Bisturi', 123, 10, '15.98', '343.87', 100, '2020-10-10'),
-(1, 'Bisturi', 123, 10, '15.98', '343.87', 100, '2020-10-10'),
-(1, 'Bisturi', 123, 10, '15.98', '343.87', 100, '2020-10-10'),
-(1, 'Bisturi', 123, 10, '15.98', '343.87', 100, '2020-10-10'),
-(1, 'Bisturi', 123, 10, '15.98', '343.87', 100, '2020-10-10'),
-(1, 'Bisturi', 123, 10, '15.98', '343.87', 100, '2020-10-10'),
-(1, 'Bisturi', 123, 10, '15.98', '343.87', 100, '2020-10-10'),
-(1, 'Bisturi', 123, 10, '15.98', '343.87', 100, '2020-10-10'),
-(1, 'Bisturi', 123, 10, '15.98', '343.87', 100, '2020-10-10'),
-(1, 'Bisturi', 123, 10, '15.98', '343.87', 100, '2020-10-10'),
-(1, 'Bisturi', 123, 10, '15.98', '343.87', 100, '2020-10-10'),
-(1, 'Bisturi', 123, 10, '15.98', '343.87', 100, '2020-10-10'),
-(1, 'Bisturi', 123, 10, '15.98', '343.87', 100, '2020-10-10'),
-(1, 'Bisturi', 123, 10, '15.98', '343.87', 100, '2020-10-10'),
-(1, 'Bisturi', 123, 10, '15.98', '343.87', 100, '2020-10-10'),
-(1, 'Bisturi', 123, 10, '15.98', '343.87', 100, '2020-10-10'),
-(1, 'Bisturi', 123, 10, '15.98', '343.87', 100, '2020-10-10');
+INSERT INTO `produtos` (`itens`, `disc_produto`, `qt_total`, `qt_atual`, `vl_unitario`, `vl_total`, `lote`, `validade`, `unidade`, `dt_entrada`) VALUES
+(1, 'Bisturi', 20, 0, '2.50', '0.00', 1, '2020-01-01', 'UND', '2018-05-05'),
+(2, 'Máscara de Procedimento', 30, 0, '12.90', '0.00', 1, '2019-03-03', 'PCT', '2018-05-05'),
+(3, 'Máscara de Proteção', 29, 0, '5.64', '0.00', 1, '2019-11-27', 'und', '2019-05-05'),
+(4, 'luva de proteção', 487, 0, '987.56', '0.00', 2, '2018-05-05', 'pct', '2020-05-05');
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
