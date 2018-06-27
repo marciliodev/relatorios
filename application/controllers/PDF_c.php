@@ -7,8 +7,9 @@ class PDF_c extends CI_Controller {
 
 	public function __construct()
 	{
-		parent::__construct();
-		$this->load->model('pdf');
+        
+        parent::__construct();
+		$this->load->model('almoxarifado');
 	}
 
 	public function index()
@@ -23,7 +24,8 @@ class PDF_c extends CI_Controller {
 
     //CONTROLADORES DE CONTEÚDO 
 
-    public function passaData() {
+    public function passaData() 
+    {
 
         return date('d/m/Y');
     }
@@ -44,6 +46,8 @@ class PDF_c extends CI_Controller {
             case 'material_entrada':
                 return "<h1 class=\"h1Titulo\">Relatório de Material de Entrada - ".$this->passaData().".</h1>";
                 break;
+            case 'material_entrada_resultado':
+                return "<h1 class=\"h1Titulo\">Resultados da Pesquisa (Entrada) - ".$this->passaData().".</h1>";
             default:
                 return "";
                 break;
@@ -65,7 +69,10 @@ class PDF_c extends CI_Controller {
         
     public function liberaConteudo() //modificar estrutura como em relacao_escritorio_html();
     {
+        
         switch (@$_GET['p']) {
+            
+            
             case 'material_escritorio':
                 return $this->relacao_escritorio_html();
                 break;
@@ -78,6 +85,8 @@ class PDF_c extends CI_Controller {
             case 'material_entrada':
                 return $this->relacao_entrada_html();
                 break;
+            case 'material_entrada_resultados':
+                return $this->modalEntrada();
             default:
                 return $this->relacao_index();
                 break;
@@ -86,6 +95,7 @@ class PDF_c extends CI_Controller {
 
     public function liberaImpressao() //modificar estrutura como em relacao_escritorio_html();
     {
+        
         switch (@$_GET['p']) {
             case 'material_escritorio':
                 return "<a class=\"btn btn-primary\" href=\"./index.php/pdf_escritorio\" target=\"_blank\">Gerar PDF</a>";
@@ -94,10 +104,24 @@ class PDF_c extends CI_Controller {
                 return "<a class=\"btn btn-primary\" href=\"./index.php/pdf_almoxarifado\" target=\"_blank\">Gerar PDF</a>";
                 break;
             case 'material_servico_vascular':
-            return "<a class=\"btn btn-primary\" href=\"./index.php/pdf_servico_vascular\" target=\"_blank\">Gerar PDF</a>";
+                return "<a class=\"btn btn-primary\" href=\"./index.php/pdf_servico_vascular\" target=\"_blank\">Gerar PDF</a>";
                 break;
             case 'material_entrada':
-            return "<a class=\"btn btn-primary\" href=\"./index.php/pdf_entrada\" target=\"_blank\">Gerar PDF</a>";
+                if (@$_POST['dtInicial'] == NULL || @$_POST['dtFinal'] == NULL) { 
+                    $html = "";
+                    $html .= "
+                        <button class=\"btn btn-primary\" type=\"submit\">Buscar</button>
+                    "; 
+                    return $html;
+                } else {
+
+                    $html = "";
+                    $html .= "
+                        <button class=\"btn btn-primary\" type=\"submit\">Buscar</button>
+                        <a class=\"btn btn-danger\" href=\"./index.php/pdf_entrada\" target=\"_blank\">Gerar PDF</a>
+                    "; 
+                    return $html;
+                }
                 break;
             default:
                 return "";//implementar
@@ -107,6 +131,7 @@ class PDF_c extends CI_Controller {
 
     public function relacao_index()
     {
+        
         $html = "";
         $html .= "
             <div class=\"divIndex\">
@@ -118,49 +143,103 @@ class PDF_c extends CI_Controller {
 
     public function relacao_escritorio_html()//espelhar nas demais estrurutas também.
     {
+        
+        $dados = [
+
+            'dados' => $this->almoxarifado->busca_produtos(),
+            'tituloModal' => $this->setTitulo(),
+            'impressaoPDF' => $this->liberaImpressao()
+        ];
+
+        /*
         //var_dump($var);return;
-        $dados['dados'] = $this->pdf->busca_produtos();
+        $dados['dados'] = $this->almoxarifado->busca_produtos();
         $dados['tituloModal'] = $this->setTitulo();
         $dados['impressaoPDF'] = $this->liberaImpressao();
         //$dados['bodyModal'] = $this->load->view('pdf/material_escritorio/body', '', FALSE);
+        */
+
         return $this->load->view('pdf/material_escritorio/url', $dados, TRUE);
     }
 
     public function relacao_almoxarifado_html()//espelhar nas demais estrurutas também.
     {
+
+        $dados = [
+
+            'dados' => $this->almoxarifado->busca_produtos(),
+            'tituloModal' => $this->setTitulo(),
+            'impressaoPDF' => $this->liberaImpressao()
+        ];
+        
+        /*
         //var_dump($var);return;
-        $dados['dados'] = $this->pdf->busca_produtos();
+        $dados['dados'] = $this->almoxarifado->busca_produtos();
         $dados['tituloModal'] = $this->setTitulo();
         $dados['impressaoPDF'] = $this->liberaImpressao();
         //$dados['bodyModal'] = $this->load->view('pdf/material_escritorio/body', '', FALSE);
+        */
+
         return $this->load->view('pdf/material_almoxarifado/url', $dados, TRUE);
     }
 
     public function relacao_servico_vascular_html()//espelhar nas demais estrurutas também.
     {
+
+        $dados = [ 
+
+            'dados' => $this->almoxarifado->busca_produtos(),
+            'tituloModal' => $this->setTitulo(),
+            'impressaoPDF' => $this->liberaImpressao(),
+        ];
+
+        /*    
         //var_dump($var);return;
-        $dados['dados'] = $this->pdf->busca_produtos();
+        $dados['dados'] = $this->almoxarifado->busca_produtos();
         $dados['tituloModal'] = $this->setTitulo();
         $dados['impressaoPDF'] = $this->liberaImpressao();
         //$dados['bodyModal'] = $this->load->view('pdf/material_escritorio/body', '', FALSE);
+        */
+
         return $this->load->view('pdf/material_servico_vascular/url', $dados, TRUE);
     }
 
     public function relacao_entrada_html()//espelhar nas demais estrurutas também.
     {
+        
+        $dados = [
+
+            //'dados' => $this->almoxarifado->busca_produtos(),
+            'tituloModal' => $this->setTitulo(),
+            'impressaoPDF' => $this->liberaImpressao(),
+            //'resultadoBusca' => var_dump(@$_POST["dtInicial"], @$_POST["dtFinal"]),
+            'dados' => $this->almoxarifado->busca_produtos_data(),
+        ];
+        
+        /*
+        //Verifica se já existe algum valor na variável de POST e se possuir apaga o registo
+        if(isset($_POST['dtInicial'])) {
+
+            unset($_POST['dtInicial']);
+        }
+
         //var_dump($var);return;
-        $dados['dados'] = $this->pdf->busca_produtos();
+        $dados['dados'] = $this->almoxarifado->busca_produtos();
         $dados['tituloModal'] = $this->setTitulo();
         $dados['impressaoPDF'] = $this->liberaImpressao();
+        $dados['resultadoBusca'] = $this->almoxarifado->busca_produtos_data(@$_POST['dtInicial']);
+        $dados['modalResultado'] = var_dump($_POST['dtInicial']);
         //$dados['bodyModal'] = $this->load->view('pdf/material_escritorio/body', '', FALSE);
+        */
         return $this->load->view('pdf/material_entrada/url', $dados, TRUE);
     }
 
     //CONTROLE DOS CORPOS DA BIBLIOTECA MPDF 
     public function relatorio_escritorio()
     {
+        
         $data = date('d/m/Y');
-        $dados['dados'] = $this->pdf->busca_produtos();
+        $dados['dados'] = $this->almoxarifado->busca_produtos();
         //var_dump($var);return;
         $header = $this->load->view('pdf/material_escritorio/header', [], TRUE);
         $html = $this->load->view('pdf/material_escritorio/body', $dados, TRUE);
@@ -190,8 +269,9 @@ class PDF_c extends CI_Controller {
 
     public function relatorio_almoxarifado()
     {
+        
         $data = date('d/m/Y');
-        $dados['dados'] = $this->pdf->busca_produtos();
+        $dados['dados'] = $this->almoxarifado->busca_produtos();
         //var_dump($var);return;
         $header = $this->load->view('pdf/material_almoxarifado/header', [], TRUE);
         $html = $this->load->view('pdf/material_almoxarifado/body', $dados, TRUE);
@@ -221,8 +301,9 @@ class PDF_c extends CI_Controller {
 
     public function relatorio_servico_vascular()
     {
+       
         $data = date('d/m/Y');
-        $dados['dados'] = $this->pdf->busca_produtos();
+        $dados['dados'] = $this->almoxarifado->busca_produtos();
         //var_dump($var);return;
         $header = $this->load->view('pdf/material_servico_vascular/header', [], TRUE);
         $html = $this->load->view('pdf/material_servico_vascular/body', $dados, TRUE);
@@ -252,11 +333,13 @@ class PDF_c extends CI_Controller {
 
     public function relatorio_entrada()
     {
+        
         $data = date('d/m/Y');
-        $dados['dados'] = $this->pdf->busca_produtos();
+        $dados['dados'] = $this->almoxarifado->busca_produtos_data();
         //var_dump($var);return;
         $header = $this->load->view('pdf/material_entrada/header', [], TRUE);
-        $html = $this->load->view('pdf/material_entrada/body', $dados, TRUE);
+        $html = $this->envia_dados();
+        //$html = $this->load->view('pdf/material_entrada/body', $dados, TRUE);
         //$footer = $this->load->view('pdf/material_escritorio/footer_material_escritorio', [], TRUE);
         set_time_limit(300); //seta o tempo limite de resposta para 
         ini_set("memory_limit", "600M"); //seta a quantidade de memória que pode ser usada pelo servidor

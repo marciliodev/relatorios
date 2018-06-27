@@ -269,6 +269,11 @@ tbody tr:nth-child(odd) {
     border-bottom: 1px solid #ddd;
 }
 
+#buscaEntrada {
+
+    background-image: url('../img/search.png');
+}
+
 #myInput:focus {
     
     outline: 3px solid #ddd;

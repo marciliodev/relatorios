@@ -27,7 +27,7 @@
         <!--<button onclick="dropdownMenu()" class="dropbtn">Relatórios do Almoxarifado</button>-->
         <input type="text"  placeholder="Pesquisar... " onclick="dropdownMenu()" id="myInput" onkeyup="filterFunction()">
         <div id="myDropdown" class="dropdown-content">
-            <a id="a_escritorio" onclick="mudaImp();" href="./index.php?p=material_escritorio">Material de Escritório</a>
+            <a id="a_escritorio" href="./index.php?p=material_escritorio">Material de Escritório</a>
             <a id="a_almoxarifado" href="./index.php?p=material_almoxarifado">Material do Almoxarifado</a>
             <a id="a_servico_vascular" href="./index.php?p=material_servico_vascular">Material de Serviço Vascular</a>
             <a id="a_entrada" href="./index.php?p=material_entrada">Material de Entrada</a>

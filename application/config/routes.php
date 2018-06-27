@@ -57,4 +57,5 @@ $route['pdf_escritorio'] = 'PDF_c/relatorio_escritorio';
 $route['pdf_almoxarifado'] = 'PDF_c/relatorio_almoxarifado';
 $route['pdf_servico_vascular'] = 'PDF_c/relatorio_servico_vascular';
 $route['pdf_entrada'] = 'PDF_c/relatorio_entrada';
+
 //$route['modal_escritorio'] = 'PDF_c/modal_escritorio';

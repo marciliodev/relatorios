@@ -32,8 +32,8 @@
                 <td class='left'><?php echo mb_strtoupper($dados[$i]->disc_produto, 'UTF-8') ?></td>
                 <td class='left'><?php echo $dados[$i]->qt_total ?></td>
                 <td class='left'><?php echo mb_strtoupper($dados[$i]->unidade,  'UTF-8' ) ?></td>
-                <td class='left'>R$ <?php echo number_format($dados[$i]->vl_unitario, 2, ",",".") ?></td>
-                <td class='left'>R$ <?php echo number_format($dados[$i]->vl_unitario*$dados[$i]->qt_total, 2, ",",".") ?></td>
+                <td class='left'><?php echo number_format($dados[$i]->vl_unitario, 2, ",",".") ?></td>
+                <td class='left'><?php echo number_format($dados[$i]->vl_unitario*$dados[$i]->qt_total, 2, ",",".") ?></td>
                 <td class='center'><?php echo $dados[$i]->lote ?></td>
                 <td class='center'><?php echo date('d/m/Y', strtotime($dados[$i]->validade)) ?></td>
             </tr>
@@ -86,7 +86,9 @@
             <td></td>
             <td></td>
         </td>
-    </tr>
+        </tr>
 </table>
+<?=var_dump(@$_POST['dtInicial'])?>
+<?=var_dump(@$_POST['dtFinal'])?>
 </body>
 </html>

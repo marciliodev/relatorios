@@ -34,29 +34,25 @@
                 <label class="col-sm-2 control-label">Data Inicial:</label>
                 <div class="col-sm-10">
                     <div class="input-group date" data-provide="datepicker">
-                        <input type="text" class="form-control">
+                        <input type="text" name="dtInicio" class="form-control" id="dataInicial">
                         <div class="input-group-addon">
                         <span class="glyphicon glyphicon-th"></span>
                         </div>
                     </div>
                 </div>
-
                 <label class="col-sm-2 control-label">Data Final:</label>
                 <div class="col-sm-10">
                         <div class="input-group date" data-provide="datepicker">
-                            <input type="text" class="form-control" id="dtFinal">
+                            <input type="text" name="dtFinal" class="form-control" id="dataFinal">
                             <div class="input-group-addon">
                                 <span class="glyphicon glyphicon-th"></span>
                             </div>
                         </div>
                 </div>
             </div>
-
-        <!-- Button trigger modal -->
-        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalEscritorio">
-            Consultar
-        </button>
-
+            <button type="button" onclick="consultaEntrada();" id="consulta" class="btn btn-primary" data-toggle="modal" data-target="#modalEscritorio">
+                Consultar
+            </button>
         <!-- Modal -->
         <div class="modal fade" id="modalEscritorio" tabindex="-1" role="dialog" aria-labelledby="modalEscritorioLabel" aria-hidden="true">
         <div class="modal-dialog modal-lg" role="document">
