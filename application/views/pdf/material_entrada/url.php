@@ -6,8 +6,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
 </head>
-<body>
-<!-- <body onLoad="$('#modalInfo').modal('show');"> -->
+<body onLoad="$('#modalInfo').modal('show');">
+<script src="<?=('assets/js/funcoes.js') ?>"></script>
     <!-- Modal Inicial -->
     <div class="modal fade" id="modalInfo" tabindex="-1" role="dialog" aria-labelledby="modalInfoLabel" aria-hidden="true">
         <div class="modal-dialog modal-lg" role="document">
@@ -29,12 +29,12 @@
             </div>
         </div>
     <div class="container">
-        <form class="form-horizontal" method="post" id="myForm">
+        <form class="form-horizontal" method="post" id="myForm" target="my-iframe" action="./index.php/pdf_entrada">
             <div class="form-group">
                 <label class="col-sm-2 control-label"><b>Período:</b></label>
                 <div class="col-sm-3">
                     <div class="input-group date" data-provide="datepicker">
-                        <input type="text" class="form-control" name="dtInicial" id="datainicial" placeholder="Data inicial" required>
+                        <input type="text" class="form-control" name="dtInicial" id="datainicial" placeholder="Data inicial"  data-mask="00/00/0000" data-mask-selectonfocus="true"required>
                         <div class="input-group-addon">
                         <span class="glyphicon glyphicon-th"></span>
                         </div>
@@ -52,9 +52,6 @@
                     <!-- Button trigger modal -->
                     <?=@$impressaoPDF?>
         </form> <!-- Fim do Form -->
-        <p>
-        <h3>Resultados:</h3>
-        <?=@$this->load->view('pdf/material_entrada/body', '', TRUE)?>
     </div> <!-- Fim do Container-->
 </body>
 </html>

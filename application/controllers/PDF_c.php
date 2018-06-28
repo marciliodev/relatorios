@@ -111,14 +111,9 @@ class PDF_c extends CI_Controller {
                     $html = "";
                     $html .= "
                         <button class=\"btn btn-primary\" type=\"submit\">Buscar</button>
-                    "; 
-                    return $html;
-                } else {
-
-                    $html = "";
-                    $html .= "
-                        <button class=\"btn btn-primary\" type=\"submit\">Buscar</button>
-                        <a class=\"btn btn-danger\" href=\"./index.php/pdf_entrada\" target=\"_blank\">Gerar PDF</a>
+                        <p>
+                        <h3>Resultados:</h3>
+                        <iframe name=\"my-iframe\" width=\"1000px\" height=\"400px\" src=\"./index.php/pdf_entrada\"></iframe>
                     "; 
                     return $html;
                 }
@@ -338,7 +333,7 @@ class PDF_c extends CI_Controller {
         $dados['dados'] = $this->almoxarifado->busca_produtos_data();
         //var_dump($var);return;
         $header = $this->load->view('pdf/material_entrada/header', [], TRUE);
-        $html = $this->envia_dados();
+        $html = $this->load->view('pdf/material_entrada/body', $dados, TRUE);
         //$html = $this->load->view('pdf/material_entrada/body', $dados, TRUE);
         //$footer = $this->load->view('pdf/material_escritorio/footer_material_escritorio', [], TRUE);
         set_time_limit(300); //seta o tempo limite de resposta para 

@@ -88,7 +88,5 @@
         </td>
         </tr>
 </table>
-<?=var_dump(@$_POST['dtInicial'])?>
-<?=var_dump(@$_POST['dtFinal'])?>
 </body>
 </html>

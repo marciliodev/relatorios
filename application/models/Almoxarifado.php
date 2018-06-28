@@ -26,6 +26,38 @@ class Almoxarifado extends CI_Model
         return $sql->result();
     }
 
+    /* 
+    public function busca_produtos_data()
+    {
+        //Bloco de Busca das datas enviadas no formulário
+        $query_datas_1 = $this->db->query("
+
+            SELECT * FROM consulta WHERE dt_inicial
+        ");
+        $resultado_data_1 = $query_datas_1->result();
+
+        $query_datas_2 = $this->db->query("
+        
+            SELECT * FROM consulta WHERE dt_final
+        ");
+        $resultado_data_2 = $query_datas_2->result();
+
+        //Injetando os valores da busca nas variáveis
+        @$data1 = $resultado_data_1;
+        @$data2 = $resultado_data_2;
+
+        //Bloco de Produção
+        $query_busca = $this->db->query("
+
+            SELECT * FROM produtos WHERE dt_entrada BETWEEN '$data1' AND '$data2'
+        ");
+        $resultado = $query_busca->result();
+
+        return $resultado;
+    } 
+    
+    */
+
 
     public function busca_produtos_data()
     {
@@ -60,12 +92,7 @@ class Almoxarifado extends CI_Model
         $resultado = $query->result();
 
         return $resultado;
-        /*
-        $query = "
-            SELECT * FROM `produtos`WHERE dt_entrada = '$dataBusca'";
-        return $query->result();
-        */
-    }   
+    }
 
     /*
     //Retorna Produtos por Data

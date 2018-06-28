@@ -50,11 +50,6 @@ $(document).ready(function(){
 
 });
 
-    function submitform()
-    {
-        document.myform.submit();
-    }
-
     function dropdownMenu() {
     
         document.getElementById("myDropdown").classList.toggle("show");

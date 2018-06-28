@@ -321,23 +321,47 @@ border:0px solid #CCC;
 margin:5px;
 }
 
+#conteudo {
+
+    width:100%;
+    height:auto;
+    border:0px solid #CCC;
+    margin:5px;
+}
+
+#myIframe {
+
+    width:auto;
+    height:auto;
+    border:0px solid #CCC;
+    margin:5px;
+}
+
 #mudaH1 {
 
     font-size: 5px;
 }
 
+div.rodape {
+
+    background-color: cornflowerblue;
+}
+
 .h1Titulo{
+    
     text-align: center;
     font-size: 30px;
 }
 
 .h1TituloIndex{
+    
     text-align: center;
     font-size: 35px;
     font-style: unset;
 }
 
 .divIndex {
+    
     width: 100%;
     height: 900px;
     background-image: url('../img/bg_vca.jpg');
