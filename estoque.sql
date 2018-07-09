@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: 07-Jun-2018 às 15:38
+-- Generation Time: 09-Jul-2018 às 10:57
 -- Versão do servidor: 5.7.22-0ubuntu18.04.1
--- PHP Version: 7.1.17-1+ubuntu18.04.1+deb.sury.org+1
+-- PHP Version: 7.1.18-1+ubuntu18.04.1+deb.sury.org+1
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -19,6 +19,24 @@ SET time_zone = "+00:00";
 --
 -- Database: `estoque`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `consulta`
+--
+
+CREATE TABLE `consulta` (
+  `dt_inicial` date NOT NULL,
+  `dt_final` date NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Extraindo dados da tabela `consulta`
+--
+
+INSERT INTO `consulta` (`dt_inicial`, `dt_final`) VALUES
+('2018-05-05', '2018-05-05');
 
 -- --------------------------------------------------------
 
