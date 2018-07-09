@@ -20,7 +20,9 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                   Para realizar a busca do relatório é necessário informar qual a <b>data inicial</b> e <b>data final</b> do período desejado.
+                    <div class="alert alert-warning" role="alert">
+                        <strong>Atenção!</strong> Informe o período desejado na busca, com <b>data inicial</b> e uma <b>data final</b>.
+                    </div>
                 </div>
                     <div class="modal-footer">
                         <a href="#" class="btn btn-secondary" data-dismiss="modal">Fechar</a>
@@ -34,22 +36,21 @@
                 <label class="col-sm-2 control-label"><b>Período:</b></label>
                 <div class="col-sm-3">
                     <div class="input-group date" data-provide="datepicker">
-                        <input type="text" class="form-control" name="dtInicial" id="datainicial" placeholder="Data inicial"  data-mask="00/00/0000" data-mask-selectonfocus="true"required>
+                        <input type="text" class="form-control data" name="dtInicial" id="datainicial" placeholder="Data inicial"  data-mask="00/00/0000" data-mask-selectonfocus="true"required>
                         <div class="input-group-addon">
-                        <span class="glyphicon glyphicon-th"></span>
+                        <span class="glyphicon glyphicon-calendar"></span>
                         </div>
                     </div>
                 </div>
                 <p></p>
                 <div class="col-sm-3">
                         <div class="input-group date" data-provide="datepicker">
-                            <input type="text" class="form-control" name="dtFinal" id="dataFinal" placeholder="Data final" required>
+                            <input type="text" class="form-control data" name="dtFinal" id="dataFinal" placeholder="Data final" required>
                             <div class="input-group-addon">
-                                <span class="glyphicon glyphicon-th"></span>
+                                <span class="glyphicon glyphicon-calendar"></span>
                             </div>
                         </div>
-                    <br>
-                    <!-- Button trigger modal -->
+                    <br>                    <!-- Button trigger modal -->
                     <?=@$impressaoPDF?>
         </form> <!-- Fim do Form -->
     </div> <!-- Fim do Container-->
