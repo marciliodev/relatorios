@@ -13,32 +13,31 @@
         <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
-                    <h5 class="modal-title" id="modalInfoLabel">Aviso</h5>
+                    <h5 class="modal-title" id="modalInfoLabel"> <img src="<?='assets/img/info.png'?>" height="17" width="17"/> Informação</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
                     <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
                 <div class="modal-body">
                     <div class="alert alert-warning" role="alert">
-                        <strong>Atenção!</strong> Informe o período desejado na busca, com <b>data inicial</b> e uma <b>data final</b>.
+                        <strong><img src="<?='assets/img/flag.png'?>" height="17" width="17"/> Atenção!</strong> Informe o período desejado na busca, com <b>data inicial</b> e uma <b>data final</b>.
                     </div>
                 </div>
                     <div class="modal-footer">
-                        <a href="#" class="btn btn-secondary" data-dismiss="modal">Fechar</a>
+                        <a href="#" class="btn btn-secondary" data-dismiss="modal"><img src="<?='assets/img/logout.png'?>" height="17" width="17"/> Fechar</a>
                     </div>
                 </div>
             </div>
         </div>
     <div class="container">
-        <form class="form-horizontal" method="post" id="myForm" target="my-iframe" action="./index.php/pdf_entrada">
+        <form class="" method="post" id="myForm" target="my-iframe" action="./index.php/pdf_entrada">
             <div class="form-group">
-                <label class="col-sm-2 control-label"><b>Período:</b></label>
+                <label class="col-sm-2 form-control-label"><b>Período:</b></label>
                 <div class="col-sm-3">
                     <div class="input-group date" data-provide="datepicker">
                         <input type="text" class="form-control data" name="dtInicial" id="datainicial" placeholder="Data inicial"  data-mask="00/00/0000" data-mask-selectonfocus="true"required>
                         <div class="input-group-addon">
-                        <span class="glyphicon glyphicon-calendar"></span>
+                        <img src="<?='assets/img/calendario.png'?>" height="40" width="40"/>
                         </div>
                     </div>
                 </div>
@@ -47,7 +46,7 @@
                         <div class="input-group date" data-provide="datepicker">
                             <input type="text" class="form-control data" name="dtFinal" id="dataFinal" placeholder="Data final" required>
                             <div class="input-group-addon">
-                                <span class="glyphicon glyphicon-calendar"></span>
+                            <img src="<?='assets/img/calendario.png'?>" height="40" width="40"/>    
                             </div>
                         </div>
                     <br>                    <!-- Button trigger modal -->

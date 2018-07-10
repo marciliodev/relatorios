@@ -23,12 +23,12 @@
 <nav class="navbar-right navbar-expand-lg navbar navbar-dark bg-primary">  
     <div class="dropdown">
         <!--<button onclick="dropdownMenu()" class="dropbtn">Relatórios do Almoxarifado</button>-->
-        <input type="text"  placeholder="Pesquisar... " onclick="dropdownMenu()" id="myInput" onkeyup="filterFunction()">
+        <input type="text"  placeholder="Pesquisar... " onclick="dropdownMenu()" id="myInput" onkeyup="filterFunction()" data-toggle="tooltip" data-placement="bottom" title="Selecione o relatório desejado">
         <div id="myDropdown" class="dropdown-content">
-            <a id="a_escritorio" href="./index.php?p=material_escritorio">Material de Escritório</a>
-            <a id="a_almoxarifado" href="./index.php?p=material_almoxarifado">Material do Almoxarifado</a>
-            <a id="a_servico_vascular" href="./index.php?p=material_servico_vascular">Material de Serviço Vascular</a>
-            <a id="a_entrada" href="./index.php?p=material_entrada">Material de Entrada</a>
+            <a id="a_escritorio" href="./index.php?p=material_escritorio"><img src="<?='assets/img/folder.png'?>" height="17" width="17"/> Material de Escritório</a>
+            <a id="a_almoxarifado" href="./index.php?p=material_almoxarifado"><img src="<?='assets/img/stock.png'?>" height="17" width="17"/> Material do Almoxarifado</a>
+            <a id="a_servico_vascular" href="./index.php?p=material_servico_vascular"><img src="<?='assets/img/medicine.png'?>" height="17" width="17"/> Material de Serviço Vascular</a>
+            <a id="a_entrada" href="./index.php?p=material_entrada"><img src="<?='assets/img/input.png'?>" height="17" width="17"/> Material de Entrada</a>
         </div>
     </div>
     <!-- Implementar depois...
@@ -44,7 +44,7 @@
         </div> 
     -->
     <div class="col-1">
-        <a href="./index.php"><img height="40px" width="130px" src="<?=('assets/img/MARCA PMVC_2017_COLOR.png')?>"></a>    
+        <a href="./index.php"><img data-toggle="tooltip" data-placement="right" title="Página Inicial" height="40px" width="100px" src="<?=('assets/img/MARCA PMVC_2017_COLOR.png')?>"></a>    
     </div>
         <!-- <a href="http://www.pmvc.ba.gov.br" target="_blank"><img height="40px" width="130px" src="<?=('assets/img/MARCA PMVC_2017_COLOR.png')?>"></a> -->
     <!--

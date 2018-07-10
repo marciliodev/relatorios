@@ -35,19 +35,19 @@ class PDF_c extends CI_Controller {
 
         switch (@$_GET['p']) {
             case 'material_escritorio':
-                return "<h1 class=\"h1Titulo\">Relatório de Material de Escritório - ".$this->passaData().".</h1>";
+                return "<h1 class=\"h1Titulo\">Relatório de Material de Escritório - ".$this->passaData()."</h1>";
                 break;
             case 'material_almoxarifado':
-                return "<h1 class=\"h1Titulo\">Relatório de Material do Almoxarifado - ".$this->passaData().".</h1>";
+                return "<h1 class=\"h1Titulo\">Relatório de Material do Almoxarifado - ".$this->passaData()."</h1>";
                 break;
             case 'material_servico_vascular':
-                return "<h1 class=\"h1Titulo\">Relatório de Material de Serviço Vascular - ".$this->passaData().".</h1>";
+                return "<h1 class=\"h1Titulo\">Relatório de Material de Serviço Vascular - ".$this->passaData()."</h1>";
                 break;
             case 'material_entrada':
-                return "<h1 class=\"h1Titulo\">Relatório de Material de Entrada - ".$this->passaData().".</h1>";
+                return "<h1 class=\"h1Titulo\">Relatório de Material de Entrada - ".$this->passaData()."</h1>";
                 break;
             case 'material_entrada_resultado':
-                return "<h1 class=\"h1Titulo\">Resultados da Pesquisa (Entrada) - ".$this->passaData().".</h1>";
+                return "<h1 class=\"h1Titulo\">Resultados da Pesquisa (Entrada) - ".$this->passaData()."</h1>";
             default:
                 return "";
                 break;
@@ -110,9 +110,9 @@ class PDF_c extends CI_Controller {
                 if (@$_POST['dtInicial'] == NULL || @$_POST['dtFinal'] == NULL) { 
                     $html = "";
                     $html .= "
-                        <button class=\"btn btn-primary\" type=\"submit\">Buscar</button>
+                        <button class=\"btn btn-primary\" data-toggle=\"tooltip\" data-placement=\"right\" title=\"Buscar as informações\" type=\"submit\"><img src=\"./assets/img/magnifier.png\" height=\"17\" width=\"17\"/> Buscar</button>
                         <p>
-                        <h3>Resultados:</h3>
+                        <h3 class=\"h3Titulo\">Resultados:</h3>
                         <iframe name=\"my-iframe\" width=\"1000px\" height=\"400px\" src=\"./index.php/pdf_entrada\"></iframe>
                     "; 
                     return $html;
@@ -130,7 +130,8 @@ class PDF_c extends CI_Controller {
         $html = "";
         $html .= "
             <div class=\"divIndex\">
-            <h1 class=\"h1TituloIndex\">Bem-Vindo ao Módulo de Relatórios do Almoxarifado!</h1>
+                <h1 class=\"h1TituloIndex\">Bem-Vindo!<br>Módulo de Relatórios do Almoxarifado!</h1>
+                <div align=\"center\"><img height=\"130px\" width=\"190px\" src=\"./assets/img/logo_relatorio.png\"/></div> 
             </div>
         ";
         return $html;

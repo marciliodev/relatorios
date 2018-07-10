@@ -349,12 +349,24 @@ div.rodape {
 
 .h1Titulo{
     
+    font-weight: bold;
     text-align: center;
     font-size: 30px;
 }
 
+.h3Titulo{
+    
+    font-weight: bold;
+}
+
+.imgIndex {
+
+    text-align: center;
+}
+
 .h1TituloIndex{
     
+    font-weight: bold;
     text-align: center;
     font-size: 35px;
     font-style: unset;
