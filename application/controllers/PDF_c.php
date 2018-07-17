@@ -85,8 +85,6 @@ class PDF_c extends CI_Controller {
             case 'material_entrada':
                 return $this->relacao_entrada_html();
                 break;
-            case 'material_entrada_resultados':
-                return $this->modalEntrada();
             default:
                 return $this->relacao_index();
                 break;
@@ -98,7 +96,16 @@ class PDF_c extends CI_Controller {
         
         switch (@$_GET['p']) {
             case 'material_escritorio':
-                return "<a class=\"btn btn-primary\" href=\"./index.php/pdf_escritorio\" target=\"_blank\">Gerar PDF</a>";
+                if (@$_POST['dtInicial'] == NULL || @$_POST['dtFinal'] == NULL) { 
+                    $html = "";
+                    $html .= "
+                        <button class=\"btn btn-primary\" data-toggle=\"tooltip\" data-placement=\"right\" title=\"Buscar as informações\" type=\"submit\"><img src=\"./assets/img/magnifier.png\" height=\"17\" width=\"17\"/> Buscar</button>
+                        <p>
+                        <h3 class=\"h3Titulo\">Resultados:</h3>
+                        <iframe name=\"my-iframe\" width=\"1000px\" height=\"400px\" src=\"./index.php/pdf_escritorio\"></iframe>
+                    "; 
+                    return $html;
+                }
                 break;
             case 'material_almoxarifado':
                 return "<a class=\"btn btn-primary\" href=\"./index.php/pdf_almoxarifado\" target=\"_blank\">Gerar PDF</a>";
@@ -139,22 +146,31 @@ class PDF_c extends CI_Controller {
 
     public function relacao_escritorio_html()//espelhar nas demais estrurutas também.
     {
-        
+       
         $dados = [
 
-            'dados' => $this->almoxarifado->busca_produtos(),
+            //'dados' => $this->almoxarifado->busca_produtos(),
             'tituloModal' => $this->setTitulo(),
-            'impressaoPDF' => $this->liberaImpressao()
+            'impressaoPDF' => $this->liberaImpressao(),
+            //'resultadoBusca' => var_dump(@$_POST["dtInicial"], @$_POST["dtFinal"]),
+            'dados' => $this->almoxarifado->busca_produtos_data(),
         ];
-
+        
         /*
+        //Verifica se já existe algum valor na variável de POST e se possuir apaga o registo
+        if(isset($_POST['dtInicial'])) {
+
+            unset($_POST['dtInicial']);
+        }
+
         //var_dump($var);return;
         $dados['dados'] = $this->almoxarifado->busca_produtos();
         $dados['tituloModal'] = $this->setTitulo();
         $dados['impressaoPDF'] = $this->liberaImpressao();
+        $dados['resultadoBusca'] = $this->almoxarifado->busca_produtos_data(@$_POST['dtInicial']);
+        $dados['modalResultado'] = var_dump($_POST['dtInicial']);
         //$dados['bodyModal'] = $this->load->view('pdf/material_escritorio/body', '', FALSE);
         */
-
         return $this->load->view('pdf/material_escritorio/url', $dados, TRUE);
     }
 
@@ -234,11 +250,13 @@ class PDF_c extends CI_Controller {
     public function relatorio_escritorio()
     {
         
+        
         $data = date('d/m/Y');
-        $dados['dados'] = $this->almoxarifado->busca_produtos();
+        $dados['dados'] = $this->almoxarifado->busca_produtos_data();
         //var_dump($var);return;
         $header = $this->load->view('pdf/material_escritorio/header', [], TRUE);
         $html = $this->load->view('pdf/material_escritorio/body', $dados, TRUE);
+        //$html = $this->load->view('pdf/material_entrada/body', $dados, TRUE);
         //$footer = $this->load->view('pdf/material_escritorio/footer_material_escritorio', [], TRUE);
         set_time_limit(300); //seta o tempo limite de resposta para 
         ini_set("memory_limit", "600M"); //seta a quantidade de memória que pode ser usada pelo servidor
@@ -260,7 +278,7 @@ class PDF_c extends CI_Controller {
         $mpdf->SetHTMLHeader($header);
         $mpdf->SetHTMLFooter('<b>Página {PAGENO}</br>');
         $mpdf->WriteHTML($html);
-        $mpdf->Output('Relatorio_Material_Escritório.pdf', I);
+        $mpdf->Output('Relatorio_Material_Escritorio.pdf', I);
     }
 
     public function relatorio_almoxarifado()

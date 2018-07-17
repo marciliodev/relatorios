@@ -7,73 +7,53 @@
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
 </head>
 <body onLoad="$('#modalInfo').modal('show');">
-
+<script src="<?=('assets/js/funcoes.js') ?>"></script>
     <!-- Modal Inicial -->
     <div class="modal fade" id="modalInfo" tabindex="-1" role="dialog" aria-labelledby="modalInfoLabel" aria-hidden="true">
         <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
-                    <h5 class="modal-title" id="modalInfoLabel">Aviso</h5>
+                    <h5 class="modal-title" id="modalInfoLabel"> <img src="<?='assets/img/info.png'?>" height="17" width="17"/> Informação</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
                     <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
                 <div class="modal-body">
-                   Para realizar a busca do relatório é necessário informar qual a <b>data inicial</b> e <b>data final</b> do período desejado.
+                    <div class="alert alert-warning" role="alert">
+                        <strong><img src="<?='assets/img/flag.png'?>" height="17" width="17"/> Atenção!</strong> Informe o período desejado na busca, com <b>data inicial</b> e uma <b>data final</b>.
+                    </div>
                 </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+                        <a href="#" class="btn btn-secondary" data-dismiss="modal"><img src="<?='assets/img/logout.png'?>" height="17" width="17"/> Fechar</a>
                     </div>
                 </div>
             </div>
         </div>
     <div class="container">
-        <form class="form-horizontal">
+       
+       
+        <form class="" method="post" id="myForm" target="my-iframe" action="./index.php/pdf_escritorio">
             <div class="form-group">
-                <label class="col-sm-2 control-label">Data Inicial:</label>
-                <div class="col-sm-10">
+                <label class="col-sm-2 form-control-label"><b>Período:</b></label>
+                <div class="col-sm-3">
                     <div class="input-group date" data-provide="datepicker">
-                        <input type="text" name="dtInicio" class="form-control" id="dataInicial">
+                        <input type="text" class="form-control date" name="dtInicial" id="datainicial" placeholder="Data inicial" required>
                         <div class="input-group-addon">
-                        <span class="glyphicon glyphicon-th"></span>
+                        <img src="<?='assets/img/calendario.png'?>" height="40" width="40"/>
                         </div>
                     </div>
                 </div>
-                <label class="col-sm-2 control-label">Data Final:</label>
-                <div class="col-sm-10">
+                <p></p>
+                <div class="col-sm-3">
                         <div class="input-group date" data-provide="datepicker">
-                            <input type="text" name="dtFinal" class="form-control" id="dataFinal">
+                            <input type="text" class="form-control date" name="dtFinal" id="dataFinal" placeholder="Data final" required>
                             <div class="input-group-addon">
-                                <span class="glyphicon glyphicon-th"></span>
+                            <img src="<?='assets/img/calendario.png'?>" height="40" width="40"/>    
                             </div>
                         </div>
-                </div>
-            </div>
-            <button type="button" onclick="consultaEntrada();" id="consulta" class="btn btn-primary" data-toggle="modal" data-target="#modalEscritorio">
-                Consultar
-            </button>
-        <!-- Modal -->
-        <div class="modal fade" id="modalEscritorio" tabindex="-1" role="dialog" aria-labelledby="modalEscritorioLabel" aria-hidden="true">
-        <div class="modal-dialog modal-lg" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="modalEscritorioLabel"><?=@$tituloModal?></h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
-                    <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                   <?=@$this->load->view('pdf/material_escritorio/body', '', TRUE)?>
-                </div>
-                    <div class="modal-footer">
-                        <?=@$impressaoPDF?>
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-        
+                    <br>                    <!-- Button trigger modal -->
+                    <?=@$impressaoPDF?>
+        </form> <!-- Fim do Form -->
     </div> <!-- Fim do Container-->
 </body>
 </html>
