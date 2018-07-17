@@ -30,12 +30,14 @@
             </div>
         </div>
     <div class="container">
+       
+       
         <form class="" method="post" id="myForm" target="my-iframe" action="./index.php/pdf_entrada">
             <div class="form-group">
                 <label class="col-sm-2 form-control-label"><b>Período:</b></label>
                 <div class="col-sm-3">
                     <div class="input-group date" data-provide="datepicker">
-                        <input type="text" class="form-control data" name="dtInicial" id="datainicial" placeholder="Data inicial"  data-mask="00/00/0000" data-mask-selectonfocus="true"required>
+                        <input type="text" class="form-control date" name="dtInicial" id="datainicial" placeholder="Data inicial" required>
                         <div class="input-group-addon">
                         <img src="<?='assets/img/calendario.png'?>" height="40" width="40"/>
                         </div>
@@ -44,7 +46,7 @@
                 <p></p>
                 <div class="col-sm-3">
                         <div class="input-group date" data-provide="datepicker">
-                            <input type="text" class="form-control data" name="dtFinal" id="dataFinal" placeholder="Data final" required>
+                            <input type="text" class="form-control date" name="dtFinal" id="dataFinal" placeholder="Data final" required>
                             <div class="input-group-addon">
                             <img src="<?='assets/img/calendario.png'?>" height="40" width="40"/>    
                             </div>

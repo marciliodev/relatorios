@@ -76,13 +76,13 @@ class Almoxarifado extends CI_Model
         //Dados dos campos Iniciais da Busca
         @$dataInicial = explode('/', @$dtInicial);
 
-        @$array = array(@$dataInicial[2], @$dataInicial[0], @$dataInicial[1]);
+        @$array = array(@$dataInicial[2], @$dataInicial[1], @$dataInicial[0]);
         @$data1 = implode("-", @$array);
 
         //Dados dos campos Finais da Busca
         @$dataFinal = explode('/', @$dtFinal);
 
-        @$array = array(@$dataFinal[2], @$dataFinal[0], @$dataFinal[1]);
+        @$array = array(@$dataFinal[2], @$dataFinal[1], @$dataFinal[0]);
         @$data2 = implode("-", @$array);
 
         //Bloco de Produção
