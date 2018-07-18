@@ -120,8 +120,17 @@ class PDF_c extends CI_Controller {
                 }
                 break;
             case 'material_servico_vascular':
-                return "<a class=\"btn btn-primary\" href=\"./index.php/pdf_servico_vascular\" target=\"_blank\">Gerar PDF</a>";
-                break;
+            if (@$_POST['dtInicial'] == NULL || @$_POST['dtFinal'] == NULL) { 
+                $html = "";
+                $html .= "
+                    <button class=\"btn btn-primary\" data-toggle=\"tooltip\" data-placement=\"right\" title=\"Buscar as informações\" type=\"submit\"><img src=\"./assets/img/magnifier.png\" height=\"17\" width=\"17\"/> Buscar</button>
+                    <p>
+                    <h3 class=\"h3Titulo\">Resultados:</h3>
+                    <iframe name=\"my-iframe\" width=\"1000px\" height=\"400px\" src=\"./index.php/pdf_servico_vascular\"></iframe>
+                "; 
+                return $html;
+            }
+            break;
             case 'material_entrada':
                 if (@$_POST['dtInicial'] == NULL || @$_POST['dtFinal'] == NULL) { 
                     $html = "";
@@ -216,21 +225,30 @@ class PDF_c extends CI_Controller {
     public function relacao_servico_vascular_html()//espelhar nas demais estrurutas também.
     {
 
-        $dados = [ 
+        $dados = [
 
-            'dados' => $this->almoxarifado->busca_produtos(),
+            //'dados' => $this->almoxarifado->busca_produtos(),
             'tituloModal' => $this->setTitulo(),
             'impressaoPDF' => $this->liberaImpressao(),
+            //'resultadoBusca' => var_dump(@$_POST["dtInicial"], @$_POST["dtFinal"]),
+            'dados' => $this->almoxarifado->busca_produtos_data(),
         ];
+        
+        /*
+        //Verifica se já existe algum valor na variável de POST e se possuir apaga o registo
+        if(isset($_POST['dtInicial'])) {
 
-        /*    
+            unset($_POST['dtInicial']);
+        }
+
         //var_dump($var);return;
         $dados['dados'] = $this->almoxarifado->busca_produtos();
         $dados['tituloModal'] = $this->setTitulo();
         $dados['impressaoPDF'] = $this->liberaImpressao();
+        $dados['resultadoBusca'] = $this->almoxarifado->busca_produtos_data(@$_POST['dtInicial']);
+        $dados['modalResultado'] = var_dump($_POST['dtInicial']);
         //$dados['bodyModal'] = $this->load->view('pdf/material_escritorio/body', '', FALSE);
         */
-
         return $this->load->view('pdf/material_servico_vascular/url', $dados, TRUE);
     }
 
@@ -335,10 +353,11 @@ class PDF_c extends CI_Controller {
     {
        
         $data = date('d/m/Y');
-        $dados['dados'] = $this->almoxarifado->busca_produtos();
+        $dados['dados'] = $this->almoxarifado->busca_produtos_data();
         //var_dump($var);return;
         $header = $this->load->view('pdf/material_servico_vascular/header', [], TRUE);
         $html = $this->load->view('pdf/material_servico_vascular/body', $dados, TRUE);
+        //$html = $this->load->view('pdf/material_entrada/body', $dados, TRUE);
         //$footer = $this->load->view('pdf/material_escritorio/footer_material_escritorio', [], TRUE);
         set_time_limit(300); //seta o tempo limite de resposta para 
         ini_set("memory_limit", "600M"); //seta a quantidade de memória que pode ser usada pelo servidor
@@ -353,14 +372,14 @@ class PDF_c extends CI_Controller {
             'margin_header' => 0,
             'margin_footer' => 5,
             'format' => 'A4', //implementação depois última atualização.
-            'orientation' => 'P', //mudou depois da última atualização. 
+            'orientation' => 'P', //mudou depois da última atualização.
             'default_font' => 'arial'
         ]);
-        $mpdf->SetTitle('Relatório de Materiais de Serviço Vascular');
+        $mpdf->SetTitle('Relatório de Materiais de Escritório');
         $mpdf->SetHTMLHeader($header);
         $mpdf->SetHTMLFooter('<b>Página {PAGENO}</br>');
         $mpdf->WriteHTML($html);
-        $mpdf->Output('Relatorio_Material_Serviço_Vascular.pdf', I);
+        $mpdf->Output('Relatorio_Material_Servico_Vascular.pdf', I);
     }
 
     public function relatorio_entrada()
