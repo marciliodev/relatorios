@@ -37,7 +37,7 @@
                 <label class="col-sm-2 form-control-label"><b>Período:</b></label>
                 <div class="col-sm-3">
                     <div class="input-group date" data-provide="datepicker">
-                        <input type="text" class="form-control date" name="dtInicial" id="datainicial" placeholder="Data inicial" required>
+                        <input type="text" class="form-control date" name="dtInicial" id="dataInicial" placeholder="Data inicial" maxlength="10" onkeypress="mascaraData( this, event )" required>
                         <div class="input-group-addon">
                         <img src="<?='assets/img/calendario.png'?>" height="40" width="40"/>
                         </div>
@@ -46,7 +46,7 @@
                 <p></p>
                 <div class="col-sm-3">
                         <div class="input-group date" data-provide="datepicker">
-                            <input type="text" class="form-control date" name="dtFinal" id="dataFinal" placeholder="Data final" required>
+                            <input type="text" class="form-control date" name="dtFinal" id="dataFinal" placeholder="Data final" maxlength="10" onkeypress="mascaraData( this, event )" required>
                             <div class="input-group-addon">
                             <img src="<?='assets/img/calendario.png'?>" height="40" width="40"/>    
                             </div>

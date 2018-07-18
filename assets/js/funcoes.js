@@ -50,9 +50,30 @@ $(document).ready(function(){
 
 });
 
+    function mascaraData( input, e )
+    {
+        var kC = (document.all) ? event.keyCode : e.keyCode;
+        var data = input.value;
+        
+        if( kC!=8 && kC!=46 )
+        {
+            if( data.length==2 )
+            {
+                input.value = data += '/';
+            }
+            else if( data.length==5 )
+            {
+                input.value = data += '/';
+            }
+            else
+                input.value = data;
+        }
+    }
+
     function dropdownMenu() {
     
         document.getElementById("myDropdown").classList.toggle("show");
+        openedWindow.close();
     }
 
     function filterFunction() {

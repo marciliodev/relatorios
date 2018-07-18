@@ -32,12 +32,12 @@
     <div class="container">
        
        
-        <form class="" method="post" id="myForm" target="my-iframe" action="./index.php/pdf_entrada">
+        <form class="" method="post" id="myForm" target="my-iframe" action="./index.php/pdf_servico_vascular">
             <div class="form-group">
                 <label class="col-sm-2 form-control-label"><b>Período:</b></label>
                 <div class="col-sm-3">
                     <div class="input-group date" data-provide="datepicker">
-                        <input type="text" class="form-control date" name="dtInicial" id="datainicial" placeholder="Data inicial" required>
+                        <input type="text" class="form-control date" name="dtInicial" id="dataInicial" placeholder="Data inicial" required>
                         <div class="input-group-addon">
                         <img src="<?='assets/img/calendario.png'?>" height="40" width="40"/>
                         </div>
