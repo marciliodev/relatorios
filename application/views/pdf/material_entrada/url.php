@@ -30,8 +30,9 @@
             </div>
         </div>
     <div class="container">
-       
-       
+
+        <img src=<?=('assets/img/loading.gif')?> id="spinner" alt="loading..." style="display: none;" />
+
         <form class="" method="post" id="myForm" target="my-iframe" action="./index.php/pdf_entrada">
             <div class="form-group">
                 <label class="col-sm-2 form-control-label"><b>Período:</b></label>

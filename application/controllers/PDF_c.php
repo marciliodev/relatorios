@@ -99,10 +99,12 @@ class PDF_c extends CI_Controller {
                 if (@$_POST['dtInicial'] == NULL || @$_POST['dtFinal'] == NULL) { 
                     $html = "";
                     $html .= "
-                        <button class=\"btn btn-primary\" data-toggle=\"tooltip\" data-placement=\"right\" title=\"Buscar as informações\" type=\"submit\"><img src=\"./assets/img/magnifier.png\" height=\"17\" width=\"17\"/> Buscar</button>
-                        <p>
-                        <h3 class=\"h3Titulo\">Resultados:</h3>
-                        <iframe name=\"my-iframe\" width=\"1000px\" height=\"400px\" src=\"./index.php/pdf_escritorio\"></iframe>
+                    <div class=\"divBusca\">
+                    <button class=\"btn btn-primary twoToneButton\" id=\"input\" data-toggle=\"tooltip\" data-placement=\"right\" title=\"Buscar as informações\" type=\"submit\"><img src=\"./assets/img/magnifier.png\" height=\"17\" width=\"17\"/> Buscar</button>
+                    </div>
+                    <p>
+                    <h3 class=\"h3Titulo\">Resultados:</h3>
+                    <iframe name=\"my-iframe\" width=\"1000px\" height=\"400px\" src=\"./index.php/pdf_escritorio\"></iframe>
                     "; 
                     return $html;
                 }
@@ -111,10 +113,12 @@ class PDF_c extends CI_Controller {
                 if (@$_POST['dtInicial'] == NULL || @$_POST['dtFinal'] == NULL) { 
                     $html = "";
                     $html .= "
-                        <button class=\"btn btn-primary\" data-toggle=\"tooltip\" data-placement=\"right\" title=\"Buscar as informações\" type=\"submit\"><img src=\"./assets/img/magnifier.png\" height=\"17\" width=\"17\"/> Buscar</button>
-                        <p>
-                        <h3 class=\"h3Titulo\">Resultados:</h3>
-                        <iframe name=\"my-iframe\" width=\"1000px\" height=\"400px\" src=\"./index.php/pdf_almoxarifado\"></iframe>
+                    <div class=\"divBusca\">
+                    <button class=\"btn btn-primary twoToneButton\" id=\"input\" data-toggle=\"tooltip\" data-placement=\"right\" title=\"Buscar as informações\" type=\"submit\"><img src=\"./assets/img/magnifier.png\" height=\"17\" width=\"17\"/> Buscar</button>
+                    </div>
+                    <p>
+                    <h3 class=\"h3Titulo\">Resultados:</h3>
+                    <iframe name=\"my-iframe\" width=\"1000px\" height=\"400px\" src=\"./index.php/pdf_almoxarifado\"></iframe>
                     "; 
                     return $html;
                 }
@@ -123,10 +127,12 @@ class PDF_c extends CI_Controller {
             if (@$_POST['dtInicial'] == NULL || @$_POST['dtFinal'] == NULL) { 
                 $html = "";
                 $html .= "
-                    <button class=\"btn btn-primary\" data-toggle=\"tooltip\" data-placement=\"right\" title=\"Buscar as informações\" type=\"submit\"><img src=\"./assets/img/magnifier.png\" height=\"17\" width=\"17\"/> Buscar</button>
-                    <p>
-                    <h3 class=\"h3Titulo\">Resultados:</h3>
-                    <iframe name=\"my-iframe\" width=\"1000px\" height=\"400px\" src=\"./index.php/pdf_servico_vascular\"></iframe>
+                <div class=\"divBusca\">
+                <button class=\"btn btn-primary twoToneButton\" id=\"input\" data-toggle=\"tooltip\" data-placement=\"right\" title=\"Buscar as informações\" type=\"submit\"><img src=\"./assets/img/magnifier.png\" height=\"17\" width=\"17\"/> Buscar</button>
+                </div>
+                <p>
+                <h3 class=\"h3Titulo\">Resultados:</h3>
+                <iframe name=\"my-iframe\" width=\"1000px\" height=\"400px\" src=\"./index.php/pdf_servico_vascular\"></iframe>
                 "; 
                 return $html;
             }
@@ -135,7 +141,9 @@ class PDF_c extends CI_Controller {
                 if (@$_POST['dtInicial'] == NULL || @$_POST['dtFinal'] == NULL) { 
                     $html = "";
                     $html .= "
-                        <button class=\"btn btn-primary\" data-toggle=\"tooltip\" data-placement=\"right\" title=\"Buscar as informações\" type=\"submit\"><img src=\"./assets/img/magnifier.png\" height=\"17\" width=\"17\"/> Buscar</button>
+                        <div class=\"divBusca\">
+                        <button class=\"btn btn-primary twoToneButton\" id=\"input\" data-toggle=\"tooltip\" data-placement=\"right\" title=\"Buscar as informações\" type=\"submit\"><img src=\"./assets/img/magnifier.png\" height=\"17\" width=\"17\"/> Buscar</button>
+                        </div>
                         <p>
                         <h3 class=\"h3Titulo\">Resultados:</h3>
                         <iframe name=\"my-iframe\" width=\"1000px\" height=\"400px\" src=\"./index.php/pdf_entrada\"></iframe>

@@ -41,15 +41,28 @@ $(document).ready(function(){
             $("#btnImp").attr("href", "#");
         }
     });
-
-    $('#consulta').click(function() {
-        //colocar os dados das datas iniciais e finais e converter
-        //para algum dado válido que pode ser usado na construćão do sql.
-
-    });
-
 });
 
+    // Função para gerar gif de loading na busca dos resltados dos relatorios
+    $(function(){
+        
+        var twoToneButton = document.querySelector('.twoToneButton');
+        
+            twoToneButton.addEventListener("click", function() {
+            twoToneButton.innerHTML = "Buscando... <img src=\"./assets/img/load.gif\" height=\"17\" width=\"17\"/> ";
+            twoToneButton.classList.add('spinning');
+            
+        setTimeout( 
+                function  (){  
+                    twoToneButton.classList.remove('spinning');
+                    twoToneButton.innerHTML = "<img src=\"./assets/img/magnifier.png\" height=\"17\" width=\"17\"/> Buscar";
+                    
+                }, 1000);
+        }, false);
+        
+    });
+
+    //Mascara os inputs de datas
     function mascaraData( input, e )
     {
         var kC = (document.all) ? event.keyCode : e.keyCode;
@@ -70,12 +83,14 @@ $(document).ready(function(){
         }
     }
 
+    //Chamar menu de relatórios
     function dropdownMenu() {
     
         document.getElementById("myDropdown").classList.toggle("show");
         openedWindow.close();
     }
 
+    //Filtrar relatórios na busca de acordo com a digitação
     function filterFunction() {
     
         var input, filter, ul, li, a, i;
